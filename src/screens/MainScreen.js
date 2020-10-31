@@ -1,6 +1,8 @@
 import React from "react";
+import { AntDesign } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
-import { Input, Container, Form, Item, H1, Button } from "native-base";
+import { Input, Container, Form, Item, H1, Button, Icon } from "native-base";
 
 //destructuring
 const { width, height } = Dimensions.get("window");
@@ -8,30 +10,33 @@ const { width, height } = Dimensions.get("window");
 const MainScreen = () => {
   return (
     //backgroundcolor el color de fondo
-    <Container style={{ backgroundColor: "#333333" }}>
+    <Container style={{ backgroundColor: "#FFFFFF" }}>
       <Image
         source={require("../../assets/super_nova.jpeg")}
         style={styles.photoImage}
       />
-      <H1>- - - -Apartados de la apliacion- - - -</H1>
+      <H1>- - -Apartados de la aplicación- - - -</H1>
       <Form>
         <Item style={styles.buttonCenter}>
-          <Button style={{ flex: 0.5, backgroundColor: "#FFFFFF" }}>
+          <Button icon bordered warning style={{ flex: 0.5 }}>
             <Text>Galeria</Text>
+            <Entypo name="folder-images" size={24} color="black" />
           </Button>
         </Item>
       </Form>
       <Form>
         <Item style={styles.buttonCenter}>
-          <Button style={{ flex: 0.5, backgroundColor: "#FFFFFF" }}>
+          <Button icon bordered warning style={{ flex: 0.5 }}>
             <Text>Robot de Marte</Text>
+            <AntDesign name="android" size={24} color="black" />
           </Button>
         </Item>
       </Form>
       <Form>
         <Item style={styles.buttonCenter}>
-          <Button style={{ flex: 0.5, backgroundColor: "#FFFFFF" }}>
+          <Button bordered warning style={{ flex: 0.5 }}>
             <Text>Foto del dia</Text>
+            <Entypo name="camera" size={24} color="black" />
           </Button>
         </Item>
       </Form>
