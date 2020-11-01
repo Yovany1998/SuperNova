@@ -45,6 +45,10 @@ const MarsRobot = () => {
   const [error, setError] = useState(false);
   const [search, setSearch] = useState("");
 
+  function numeroAleatorio(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
   const getMarsRobot = async () => {
     try {
       // Consultar la API
@@ -74,7 +78,7 @@ const MarsRobot = () => {
   }
 
   return (
-    <Container style={{ marginTop: 20, backgroundColor: "#FFFFFF" }}>
+    <Container style={{ marginTop: 20, backgroundColor: "#CB4335" }}>
       <H1 style={{ marginTop: 20 }}>Mars-photos</H1>
 
       <FlatList
@@ -108,25 +112,25 @@ const MarsRobot = () => {
                   <Body>
                     <Text>Code: {item.id}</Text>
 
-                    <Text>Landing date{item.rover.landing_date}</Text>
-                    <Text>Launch date{item.rover.launch_date}</Text>
+                    <Text>Landing date: {item.rover.landing_date}</Text>
+                    <Text>Launch date: {item.rover.launch_date}</Text>
                   </Body>
                 </CardItem>
                 <CardItem style={{ backgroundColor: "#FFFFFF" }}>
                   <Left>
                     <Button transparent>
                       <Icon active name="thumbs-up" />
-                      <Text>12 Likes</Text>
+                      <Text>{numeroAleatorio(1, 1000)} Likes</Text>
                     </Button>
                   </Left>
                   <Body>
                     <Button transparent>
                       <Icon active name="chatbubbles" />
-                      <Text>4 Comments</Text>
+                      <Text> {numeroAleatorio(1, 100)}Comments</Text>
                     </Button>
                   </Body>
                   <Right>
-                    <Text>11h ago</Text>
+                    <Text>{numeroAleatorio(1, 24)}h ago</Text>
                   </Right>
                 </CardItem>
               </Card>
