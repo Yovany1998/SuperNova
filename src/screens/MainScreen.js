@@ -3,6 +3,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
 import { Input, Container, Form, Item, H1, Button, Icon } from "native-base";
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 //destructuring
 const { width, height } = Dimensions.get("window");
@@ -12,33 +13,29 @@ const MainScreen = () => {
     //backgroundcolor el color de fondo
     <Container style={{ backgroundColor: "#FFFFFF" }}>
       <Image
-        source={require("../../assets/super_nova.jpeg")}
+        source={require("../../assets/luna.png")}
         style={styles.photoImage}
       />
-      <H1>- - -Apartados de la aplicación- - - -</H1>
       <Form>
-        <Item style={styles.buttonCenter}>
-          <Button icon bordered warning style={{ flex: 0.5 }}>
-            <Text>Galeria</Text>
+      <Grid>
+        <Image
+          source={require("../../assets/portada2.jpg")}
+          style={{ height: 1000,}}
+        />
+        </Grid>
+        <H1 style={styles.title}>Elija una opcion</H1>
+          <Button  style={styles.buttonCenter} block>
+            <Text>Galeria   </Text>
             <Entypo name="folder-images" size={24} color="black" />
           </Button>
-        </Item>
-      </Form>
-      <Form>
-        <Item style={styles.buttonCenter}>
-          <Button icon bordered warning style={{ flex: 0.5 }}>
-            <Text>Robot de Marte</Text>
+          <Button  style={styles.buttonCenter} block blue>
+            <Text>Robot de Marte  </Text>
             <AntDesign name="android" size={24} color="black" />
           </Button>
-        </Item>
-      </Form>
-      <Form>
-        <Item style={styles.buttonCenter}>
-          <Button bordered warning style={{ flex: 0.5 }}>
-            <Text>Foto del dia</Text>
+          <Button  style={styles.buttonCenter} block blue>
+            <Text>Foto del dia  </Text>
             <Entypo name="camera" size={24} color="black" />
           </Button>
-        </Item>
       </Form>
     </Container>
   );
@@ -56,13 +53,22 @@ const styles = StyleSheet.create({
   },
   photoImage: {
     width: width,
-    height: height * 0.33,
+    height: "11%",
     resizeMode: "stretch",
+    marginTop: 20,
+  },
+  title: {
+    marginTop: 30,
+    textAlign: "center",
+    color: "white",
+    fontSize: 30,
   },
   buttonCenter: {
     // flex: 2,
-    marginTop: 70,
+    marginTop: 100,
     marginRight: 15,
+    marginLeft: 15,
+    backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
     //  backgroundColor: "#000000",

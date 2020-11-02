@@ -37,8 +37,6 @@ const { apiKey } = getEnvVars();
 
 const { width, height } = Dimensions.get("window");
 
-const image = { uri: "https://reactjs.org/logo-og.png" };
-
 const MarsRobot = () => {
   // Estado
   const [marsrobot, setMartsRobots] = useState(null);
@@ -79,7 +77,10 @@ const MarsRobot = () => {
 
   return (
     <Container style={{ marginTop: 20, backgroundColor: "#CB4335" }}>
-      <H1 style={{ marginTop: 20 }}>Mars-photos</H1>
+      <Image
+        source={require("../../assets/luna.png")}
+        style={styles.photoImage}
+      />
 
       <FlatList
         data={marsrobot.photos}
@@ -171,6 +172,12 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
+  },
+  photoImage: {
+    width: width,
+    height: "11%",
+    resizeMode: "stretch",
+    //marginTop: 20,
   },
 });
 export default MarsRobot;
