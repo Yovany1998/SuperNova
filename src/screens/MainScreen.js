@@ -23,7 +23,7 @@ const MainScreen = () => {
           style={{ height: 1000,}}
         />
         </Grid>
-        <H1 style={styles.title}>Elija una opción</H1>
+        <H1 style={styles.title}>Choose an Option</H1>
           <Button  style={styles.buttonCenter} block>
             <Text style={styles.buttonName}>Gallery </Text>
             <Entypo name="folder-images" size={40} color="black" />

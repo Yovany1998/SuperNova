@@ -32,6 +32,7 @@ import {
 
 import backend from "../api/backend";
 import getEnvVars from "../../enviroment";
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 const { apiKey } = getEnvVars();
 
@@ -76,12 +77,22 @@ const MarsRobot = () => {
   }
 
   return (
-    <Container style={{ marginTop: 20, backgroundColor: "#CB4335" }}>
+    <Container style={{ marginTop: 20,}}>
       <Image
-        source={require("../../assets/luna.png")}
+        source={require("../../assets/SuperNova.png")}
         style={styles.photoImage}
       />
-
+      <Button style={styles.buttonHome} block>
+        <Text style={styles.buttonHomeText}>
+          Home
+        </Text>
+      </Button>
+      <Grid>
+        <Image
+          source={require("../../assets/portada2.jpg")}
+          style={{ height: 1000,}}
+        />
+        </Grid>
       <FlatList
         data={marsrobot.photos}
         keyExtractor={(item) => item.id}
@@ -89,11 +100,11 @@ const MarsRobot = () => {
         renderItem={({ item }) => {
           return (
             <View>
-              <Card>
-                <CardItem style={{ backgroundColor: "#FFFFFF" }}>
+              <Card style={{ marginTop: 50}}>
+                <CardItem style={{ backgroundColor: "#FFFFFF"}}>
                   <CardItem>
                     <Left>
-                      <Thumbnail source={{ uri: "../../assets/marte.png" }} />
+                    <Image source={require("../../assets/Wall-E.png")} style={{ height: 50, width: 50, marginLeft: -10}}/>
                       <Body>
                         <Text>Full name: {item.camera.full_name}</Text>
                         <Text note>Earth date: {item.earth_date}</Text>
@@ -153,7 +164,7 @@ const styles = StyleSheet.create({
     margin: 15,
   },
   marsphoto: {
-    height: 200,
+    height: 600,
     width: null,
     flex: 1,
   },
@@ -178,6 +189,13 @@ const styles = StyleSheet.create({
     height: "11%",
     resizeMode: "stretch",
     //marginTop: 20,
+  },
+  buttonHome: {
+    backgroundColor: "#333",
+  },
+  buttonHomeText: {
+    color: "#FFFFFF",
+    fontSize: 28,
   },
 });
 export default MarsRobot;
