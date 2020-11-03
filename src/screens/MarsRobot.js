@@ -95,7 +95,8 @@ const MarsRobot = () => {
         </Grid>
       <FlatList
         data={marsrobot.photos}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
+        //keyExtractor={(item) => item.id}
         ListEmptyComponent={<Text>¡No se han encontrado nada!</Text>}
         renderItem={({ item }) => {
           return (

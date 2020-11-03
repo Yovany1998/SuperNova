@@ -41,6 +41,7 @@ const { width, height } = Dimensions.get("window");
 const DayImage = () => {
   // Estado
   const [dayImage, setMartsRobots] = useState(null);
+  const [error, setError] = useState(false);
 
   function numeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
