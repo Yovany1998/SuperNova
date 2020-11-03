@@ -13,7 +13,7 @@ const MainScreen = () => {
     //backgroundcolor el color de fondo
     <Container style={{ backgroundColor: "#FFFFFF" }}>
       <Image
-        source={require("../../assets/luna.png")}
+        source={require("../../assets/SuperNova.png")}
         style={styles.photoImage}
       />
       <Form>
@@ -23,18 +23,18 @@ const MainScreen = () => {
           style={{ height: 1000,}}
         />
         </Grid>
-        <H1 style={styles.title}>Elija una opcion</H1>
+        <H1 style={styles.title}>Elija una opción</H1>
           <Button  style={styles.buttonCenter} block>
-            <Text>Galeria   </Text>
-            <Entypo name="folder-images" size={24} color="black" />
+            <Text style={styles.buttonName}>Gallery </Text>
+            <Entypo name="folder-images" size={40} color="black" />
           </Button>
           <Button  style={styles.buttonCenter} block blue>
-            <Text>Robot de Marte  </Text>
-            <AntDesign name="android" size={24} color="black" />
+            <Text style={styles.buttonName}>Mars Rover </Text>
+            <AntDesign name="android" size={40} color="black" />
           </Button>
           <Button  style={styles.buttonCenter} block blue>
-            <Text>Foto del dia  </Text>
-            <Entypo name="camera" size={24} color="black" />
+            <Text style={styles.buttonName}>Image of the Day </Text>
+            <Entypo name="camera" size={40} color="black" />
           </Button>
       </Form>
     </Container>
@@ -63,14 +63,18 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 30,
   },
+  buttonName:{
+    fontSize: 40,
+  },
   buttonCenter: {
     // flex: 2,
     marginTop: 100,
-    marginRight: 15,
-    marginLeft: 15,
+    marginRight: 95,
+    marginLeft: 95,
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
+    height: 100,
     //  backgroundColor: "#000000",
   },
 });
