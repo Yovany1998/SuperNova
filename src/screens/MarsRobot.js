@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
   },
   photoImage: {
     width: width,
-    height: "11%",
+    height: 120,
     resizeMode: "stretch",
     //marginTop: 20,
   },

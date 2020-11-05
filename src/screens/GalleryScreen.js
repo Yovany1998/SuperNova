@@ -93,36 +93,41 @@ const GalleryScreen = () => {
   }
 
   return (
-    <Container style={{ marginTop: 20 }}>
+    <Container style={{ marginTop: 20,}}>
       <Image
         source={require("../../assets/SuperNova.png")}
         style={styles.photoImage}
       />
       <Button style={styles.buttonHome} block>
-        <Text style={styles.buttonHomeText}>Home</Text>
+        <Text style={styles.buttonHomeText}>
+          Home
+        </Text>
       </Button>
-
-      <Header searchBar>
+      <Header searchBar rounded style={{backgroundColor:"#333"}}>
         <Item>
           <Input
-            placeholder="Buscar"
+            placeholder="Search..."
             value={search}
             onChangeText={setSearch}
-            style={searchError ? styles.inputError : null}
+            //style={searchError ? styles.inputError : null}
           />
-        </Item>
-
-        <Button icon>
+          <Button icon style={{backgroundColor:"#333"}}>
           <Icon name="search" />
         </Button>
-      </Header>
-
-      <Content>
+        </Item>
+      </Header>      
+      <Grid>
+        <Image
+          source={require("../../assets/portada2.jpg")}
+          style={{ height: 1000,}}
+        />
+      </Grid>
+      <Content style={{ marginTop: -380}}>
         <Card>
           <CardItem>
             <Left>
               <Image
-                source={require("../../assets/Wall-E.png")}
+                source={require("../../assets/Hubble.png")}
                 style={{ height: 50, width: 50, marginLeft: -10 }}
               />
               <Body>
@@ -169,24 +174,24 @@ const GalleryScreen = () => {
               <Text>{numeroAleatorio(1, 24)} h ago</Text>
             </Right>
           </CardItem>
-          <Button
-            style={styles.buttonHome}
+        </Card>
+        <Button
+            style={styles.button}
             block
             icon
             onPress={() => setContador(contador + 1)}
           >
-            <Text>Siguiente</Text>
+            <Text style={styles.buttontext}>Next</Text>
           </Button>
 
           <Button
-            style={styles.buttonRegresar}
+            style={styles.button}
             block
             icon
             onPress={() => setContador(contador - 1)}
           >
-            <Text>Regresar</Text>
+            <Text style={styles.buttontext}>Back</Text>
           </Button>
-        </Card>
       </Content>
     </Container>
   );
@@ -231,20 +236,24 @@ const styles = StyleSheet.create({
   },
   photoImage: {
     width: width,
-    height: "11%",
+    height: 120,
     resizeMode: "stretch",
-    //marginTop: 20,
   },
   buttonHome: {
     backgroundColor: "#333",
   },
-  buttonRegresar: {
-    backgroundColor: "#566573",
+  button: {
+    backgroundColor: "#333",
+    marginTop: 10,
   },
   buttonHomeText: {
     color: "#FFFFFF",
     fontSize: 28,
   },
+  buttontext: {
+    color: "#FFFFFF",
+    fontSize: 20,
+  }
 });
 
 export default GalleryScreen;
