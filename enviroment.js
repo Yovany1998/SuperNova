@@ -4,8 +4,8 @@ const ENV = {
   dev: {
     apiUrl: "https://api.nasa.gov/",
     apiKey: "RIMsRhP5lClsqnFzx3eykpkRhnapwzfOkhs7s9pb",
-    // apiImageUrl: "https://image.tmdb.org/t/p/",
-    // apiImageSize: "w500",
+    apisearch: "search?q",
+    apiImage: "https://images-api.nasa.gov",
   },
 };
 

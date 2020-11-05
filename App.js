@@ -5,5 +5,5 @@ import MarsRobot from "./src/screens/MarsRobot";
 import DayImage from "./src/screens/DayImage";
 
 export default function App() {
-  return <MainScreen></MainScreen>;
+  return <GalleryScreen></GalleryScreen>;
 }
