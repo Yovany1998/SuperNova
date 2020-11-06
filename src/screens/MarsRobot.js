@@ -77,16 +77,12 @@ const MarsRobot = () => {
   }
 
   return (
-    <Container style={{ marginTop: 20,}}>
+    <Container>
       <Image
         source={require("../../assets/SuperNova.png")}
         style={styles.photoImage}
       />
-      <Button style={styles.buttonHome} block>
-        <Text style={styles.buttonHomeText}>
-          Home
-        </Text>
-      </Button>
+      
       <Grid>
         <Image
           source={require("../../assets/portada2.jpg")}
@@ -187,16 +183,10 @@ const styles = StyleSheet.create({
   },
   photoImage: {
     width: width,
-    height: 120,
-    resizeMode: "stretch",
+    height: "12%",
+    resizeMode: "contain",
     //marginTop: 20,
   },
-  buttonHome: {
-    backgroundColor: "#333",
-  },
-  buttonHomeText: {
-    color: "#FFFFFF",
-    fontSize: 28,
-  },
+  
 });
 export default MarsRobot;

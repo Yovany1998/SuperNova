@@ -31,6 +31,7 @@ import {
   FlatList,
 } from "react-native";
 
+import { Col, Row, Grid } from "react-native-easy-grid";
 import backend from "../api/backend";
 import getEnvVars from "../../enviroment";
 
@@ -49,7 +50,9 @@ const DayImage = () => {
   const getMarsRobot = async () => {
     try {
       // Consultar la API
-      const response = await backend.get(`${apiImageUrl}=${apiKey}`);
+      const response = await backend.get(`planetary/apod?api_key=${apiKey}`);
+      // console.log(response.data);
+
       setMartsRobots(response.data);
     } catch (error) {
       // Error al momento de ejecutar la petición a la API
@@ -71,17 +74,22 @@ const DayImage = () => {
     );
   }
   return (
-    <Container style={{ marginTop: 10, backgroundColor: "#CB4335" }}>
+    <Container>
       <Image
-        source={require("../../assets/luna.png")}
+        source={require("../../assets/SuperNova.png")}
         style={styles.photoImage}
       />
-
-      <Content>
+      <Grid>
+        <Image
+          source={require("../../assets/portada2.jpg")}
+          style={{ height: 1000 }}
+        />
+      </Grid>
+      <Content style={{marginTop: "-55%",}}>
         <Card>
           <CardItem>
             <Left>
-              <Thumbnail source={{ uri: "Image URL" }} />
+            <Image source={require("../../assets/Camera.jpg")} style={{ height: 70, width: 50, marginLeft: -10}}/>
               <Body>
                 <H1>{dayImage.title}</H1>
                 <Text>copyright: {dayImage.copyright}</Text>
@@ -95,7 +103,7 @@ const DayImage = () => {
               style={{ height: 300, width: null, flex: 1 }}
             />
           </CardItem>
-          <H3>explanatión</H3>
+          <H3>Caption</H3>
           <Text>{dayImage.explanation}</Text>
 
           <CardItem>
@@ -153,11 +161,10 @@ const styles = StyleSheet.create({
   },
   photoImage: {
     width: width,
-    height: "11%",
-    resizeMode: "stretch",
+    height: "12%",
+    resizeMode: "contain",
     //marginTop: 20,
   },
 });
 
 export default DayImage;
- 

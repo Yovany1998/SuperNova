@@ -66,7 +66,8 @@ const GalleryScreen = () => {
   const handlerSearch = () => {
     if (!search) setSearchError(true);
     else {
-      navigation.navigate("movieSearch", { search });
+      Termino = search;
+      getGallery();
       setSearchError(false);
     }
   };
@@ -91,19 +92,13 @@ const GalleryScreen = () => {
       </View>
     );
   }
-
   return (
-    <Container style={{ marginTop: 20,}}>
+    <Container>
       <Image
         source={require("../../assets/SuperNova.png")}
         style={styles.photoImage}
       />
-      <Button style={styles.buttonHome} block>
-        <Text style={styles.buttonHomeText}>
-          Home
-        </Text>
-      </Button>
-      <Header searchBar rounded style={{backgroundColor:"#333"}}>
+      <Header searchBar rounded style={{ backgroundColor: "#333" }}>
         <Item>
           <Input
             placeholder="Search..."
@@ -111,18 +106,22 @@ const GalleryScreen = () => {
             onChangeText={setSearch}
             //style={searchError ? styles.inputError : null}
           />
-          <Button icon style={{backgroundColor:"#333"}}>
-          <Icon name="search" />
-        </Button>
+          <Button
+            icon
+            onPress={handlerSearch}
+            style={{ backgroundColor: "#333" }}
+          >
+            <Icon name="search" />
+          </Button>
         </Item>
-      </Header>      
+      </Header>
       <Grid>
         <Image
           source={require("../../assets/portada2.jpg")}
-          style={{ height: 1000,}}
+          style={{ height: 1000 }}
         />
       </Grid>
-      <Content style={{ marginTop: -380}}>
+      <Content style={{ marginTop: "-50%" }}>
         <Card>
           <CardItem>
             <Left>
@@ -176,22 +175,22 @@ const GalleryScreen = () => {
           </CardItem>
         </Card>
         <Button
-            style={styles.button}
-            block
-            icon
-            onPress={() => setContador(contador + 1)}
-          >
-            <Text style={styles.buttontext}>Next</Text>
-          </Button>
+          style={styles.button}
+          block
+          icon
+          onPress={() => setContador(contador + 1)}
+        >
+          <Text style={styles.buttontext}>Next</Text>
+        </Button>
 
-          <Button
-            style={styles.button}
-            block
-            icon
-            onPress={() => setContador(contador - 1)}
-          >
-            <Text style={styles.buttontext}>Back</Text>
-          </Button>
+        <Button
+          style={styles.button}
+          block
+          icon
+          onPress={() => setContador(contador - 1)}
+        >
+          <Text style={styles.buttontext}>Back</Text>
+        </Button>
       </Content>
     </Container>
   );
@@ -213,8 +212,8 @@ const styles = StyleSheet.create({
     color: "red",
   },
   marsphoto: {
-    height: 400,
-    width: null,
+    height: 300,
+    //width: null,
     resizeMode: "stretch",
     flex: 1,
   },
@@ -236,8 +235,8 @@ const styles = StyleSheet.create({
   },
   photoImage: {
     width: width,
-    height: 120,
-    resizeMode: "stretch",
+    height: "12%",
+    resizeMode: "contain",
   },
   buttonHome: {
     backgroundColor: "#333",
@@ -253,7 +252,7 @@ const styles = StyleSheet.create({
   buttontext: {
     color: "#FFFFFF",
     fontSize: 20,
-  }
+  },
 });
 
 export default GalleryScreen;
