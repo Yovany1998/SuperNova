@@ -1,3 +1,4 @@
+//Importamos los archivos que nesecitamos de otras carpetas o librerias
 import {
   Container,
   Card,
@@ -23,15 +24,18 @@ import backend from "../api/backend";
 import getEnvVars from "../../enviroment";
 import { Col, Row, Grid } from "react-native-easy-grid";
 
+//Variables que necesitaremos importar de envoriment
 const { apiKey } = getEnvVars();
 
+//Dimenciones de la pantalla
 const { width, height } = Dimensions.get("window");
 
 const MarsRobot = () => {
-  // Estado
+  // Estado del objeto
   const [marsrobot, setMartsRobots] = useState(null);
   const [error, setError] = useState(false);
 
+  //Funcion que retorna un numero aleatorio entre los maximos y minimos
   function numeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
@@ -42,7 +46,7 @@ const MarsRobot = () => {
       const response = await backend.get(
         `mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${apiKey}`
       );
-      //console.log(response.data);
+
       setMartsRobots(response.data);
     } catch (error) {
       // Error al momento de ejecutar la petición a la API
@@ -50,12 +54,13 @@ const MarsRobot = () => {
     }
   };
 
-  // Hook de efecto
+  // Hook de efecto se ejecuta cada vez que se rendiriza la pantala
   useEffect(() => {
-    // Efecto secundario realizar la petición a la API
+    // Efecto secundario realizar la petición a la API solo se ejecutara una vez
     getMarsRobot();
   }, []);
 
+  //flex en caso de que la ventana sea diferenete
   if (!marsrobot) {
     return (
       <View style={{ flex: 1, justifyContent: "center" }}>
@@ -142,6 +147,7 @@ const MarsRobot = () => {
   );
 };
 
+//Estilos de la pantalla
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -171,4 +177,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
 });
+
+//exportamos la pantalla
 export default MarsRobot;

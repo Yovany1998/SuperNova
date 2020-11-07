@@ -21,28 +21,37 @@ import {
 import backend from "../api/backendImage";
 import getEnvVars from "../../enviroment";
 
+//Variables que necesitaremos importar de envoriment
 const { apisearch } = getEnvVars();
 
+//Dimenciones de la pantalla
 const { width, height } = Dimensions.get("window");
 
+//Funcion que retorna un numero aleatorio entre los maximos y minimos
 function numeroAleatorio(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
 const GalleryScreen = () => {
+  //Estados del objeto
   const [gallery, setGallery] = useState(null);
   const [contador, setContador] = useState(0);
   const [error, setError] = useState(false);
   const [search, setSearch] = useState("");
   const [searchError, setSearchError] = useState(false);
 
-  let Termino = "Marte";
+  //Declaramos Termino para reemplazarlo luego y usarlo en la busqueda
+  //Por defecto muestra los resultados de Titan
+  let Termino = "Titan";
 
   const getGallery = async () => {
     try {
+      //Peticion ala API
       const response = await backend.get(`${apisearch}=${Termino}&page=1`);
-
+      //Mandamos los datos de response.data asetGallery
       setGallery(response.data);
+      //cada vez que haga una consulta el contador empezara desde 0 para mostrar la primera imagen
+      contador === 0;
     } catch (error) {
       // Error al momento de ejecutar la petición a la API
       setError(true);
@@ -68,6 +77,7 @@ const GalleryScreen = () => {
     if (search) setSearchError(false);
   }, [search]);
 
+  //Muestra un spiner si la pantalla es diferente de gallery
   if (!gallery) {
     return (
       <View style={{ flex: 1, justifyContent: "center" }}>
@@ -75,9 +85,11 @@ const GalleryScreen = () => {
       </View>
     );
   }
-
+  //declaramos bottonReturn para usar en la funcion del boton hacia atras(Back)
   let bottonReturn;
+  //funcion Back
   function Back(contador) {
+    //cada vez que el contador sea 0 no mostrara el boton de Back para evitar que haga una consulta invalida
     if (contador >= 1) {
       bottonReturn = (
         <Button
@@ -92,10 +104,12 @@ const GalleryScreen = () => {
     }
     return bottonReturn;
   }
+
   return (
+    //se mostraran cada uno de los elementos recorriendo la posision del elemento dentro del arreglo
     <Container>
       <Image
-        source={require("../../assets/SuperNova.png")}
+        source={require("../../assets/SuperNova.png")} //logo de la parte superior
         style={styles.photoImage}
       />
       <Header searchBar rounded style={{ backgroundColor: "#333" }}>
@@ -109,7 +123,7 @@ const GalleryScreen = () => {
           <Button
             icon
             onPress={handlerSearch}
-            style={{ backgroundColor: "#333" }}
+            style={{ backgroundColor: "#333" }} //boton de busqueda
           >
             <Icon name="search" />
           </Button>
@@ -238,4 +252,5 @@ const styles = StyleSheet.create({
   },
 });
 
+//exportamos la pantalla
 export default GalleryScreen;
