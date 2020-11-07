@@ -1,22 +1,12 @@
 import {
   Container,
-  Form,
-  Input,
-  Item,
-  H1,
   Card,
   CardItem,
-  H3,
-  H4,
-  H5,
   Body,
   Button,
-  Center,
-  Header,
   Spinner,
   Icon,
   Left,
-  Thumbnail,
   Right,
 } from "native-base";
 import React, { useEffect, useState } from "react";
@@ -25,14 +15,13 @@ import {
   View,
   Text,
   Image,
-  ImageBackground,
   Dimensions,
   FlatList,
 } from "react-native";
 
 import backend from "../api/backend";
 import getEnvVars from "../../enviroment";
-import { Col, Row, Grid } from 'react-native-easy-grid';
+import { Col, Row, Grid } from "react-native-easy-grid";
 
 const { apiKey } = getEnvVars();
 
@@ -42,7 +31,6 @@ const MarsRobot = () => {
   // Estado
   const [marsrobot, setMartsRobots] = useState(null);
   const [error, setError] = useState(false);
-  const [search, setSearch] = useState("");
 
   function numeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -82,13 +70,13 @@ const MarsRobot = () => {
         source={require("../../assets/SuperNova.png")}
         style={styles.photoImage}
       />
-      
+
       <Grid>
         <Image
           source={require("../../assets/portada2.jpg")}
-          style={{ height: 1000,}}
+          style={{ height: 1000 }}
         />
-        </Grid>
+      </Grid>
       <FlatList
         data={marsrobot.photos}
         keyExtractor={(item) => item.id.toString()}
@@ -97,11 +85,14 @@ const MarsRobot = () => {
         renderItem={({ item }) => {
           return (
             <View>
-              <Card style={{ marginTop: 50}}>
-                <CardItem style={{ backgroundColor: "#FFFFFF"}}>
+              <Card style={{ marginTop: 50 }}>
+                <CardItem style={{ backgroundColor: "#FFFFFF" }}>
                   <CardItem>
                     <Left>
-                    <Image source={require("../../assets/Wall-E.png")} style={{ height: 50, width: 50, marginLeft: -10}}/>
+                      <Image
+                        source={require("../../assets/Wall-E.png")}
+                        style={{ height: 50, width: 50, marginLeft: -10 }}
+                      />
                       <Body>
                         <Text>Full name: {item.camera.full_name}</Text>
                         <Text note>Earth date: {item.earth_date}</Text>
@@ -157,9 +148,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  input: {
-    margin: 15,
-  },
+
   marsphoto: {
     height: 600,
     width: null,
@@ -170,12 +159,7 @@ const styles = StyleSheet.create({
     height: height * 0.33,
     resizeMode: "stretch",
   },
-  search: {
-    flexDirection: "column",
-    flex: 1,
-    marginTop: 40,
-    marginRight: 15,
-  },
+
   image: {
     flex: 1,
     resizeMode: "cover",
@@ -185,8 +169,6 @@ const styles = StyleSheet.create({
     width: width,
     height: "12%",
     resizeMode: "contain",
-    //marginTop: 20,
   },
-  
 });
 export default MarsRobot;

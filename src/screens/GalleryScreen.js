@@ -1,26 +1,15 @@
 // Importar los módulos necesarios
 import React, { useEffect, useState } from "react";
-import {
-  FlatList,
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  Dimensions,
-} from "react-native";
+import { StyleSheet, View, Text, Image, Dimensions } from "react-native";
 import {
   Container,
-  Form,
   Input,
   Item,
-  Center,
   Icon,
   Left,
-  Thumbnail,
   Header,
   Content,
   Card,
-  H1,
   CardItem,
   H3,
   Body,
@@ -32,16 +21,13 @@ import {
 import backend from "../api/backendImage";
 import getEnvVars from "../../enviroment";
 
-const { apiKey, apisearch, apiImage } = getEnvVars();
-//const { apiKey, apiImageUrl, apiImageSize } = getEnvVars();
+const { apisearch } = getEnvVars();
 
 const { width, height } = Dimensions.get("window");
 
 function numeroAleatorio(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
-
-let nota = [];
 
 const GalleryScreen = () => {
   const [gallery, setGallery] = useState(null);
@@ -56,7 +42,6 @@ const GalleryScreen = () => {
     try {
       const response = await backend.get(`${apisearch}=${Termino}&page=1`);
 
-      //console.log(response.data);
       setGallery(response.data);
     } catch (error) {
       // Error al momento de ejecutar la petición a la API
@@ -83,14 +68,29 @@ const GalleryScreen = () => {
     if (search) setSearchError(false);
   }, [search]);
 
-  // Promesa
-
   if (!gallery) {
     return (
       <View style={{ flex: 1, justifyContent: "center" }}>
         <Spinner color="blue" />
       </View>
     );
+  }
+
+  let bottonReturn;
+  function Back(contador) {
+    if (contador >= 1) {
+      bottonReturn = (
+        <Button
+          style={styles.button}
+          block
+          icon
+          onPress={() => setContador(contador - 1)}
+        >
+          <Text style={styles.buttontext}>Back</Text>
+        </Button>
+      );
+    }
+    return bottonReturn;
   }
   return (
     <Container>
@@ -104,7 +104,7 @@ const GalleryScreen = () => {
             placeholder="Search..."
             value={search}
             onChangeText={setSearch}
-            //style={searchError ? styles.inputError : null}
+            style={searchError ? styles.inputError : null}
           />
           <Button
             icon
@@ -183,14 +183,7 @@ const GalleryScreen = () => {
           <Text style={styles.buttontext}>Next</Text>
         </Button>
 
-        <Button
-          style={styles.button}
-          block
-          icon
-          onPress={() => setContador(contador - 1)}
-        >
-          <Text style={styles.buttontext}>Back</Text>
-        </Button>
+        {Back(contador)}
       </Content>
     </Container>
   );
@@ -217,11 +210,7 @@ const styles = StyleSheet.create({
     resizeMode: "stretch",
     flex: 1,
   },
-  photo: {
-    width: width,
-    height: height * 0.33,
-    resizeMode: "stretch",
-  },
+
   search: {
     flexDirection: "column",
     flex: 1,
@@ -238,18 +227,12 @@ const styles = StyleSheet.create({
     height: "12%",
     resizeMode: "contain",
   },
-  buttonHome: {
-    backgroundColor: "#333",
-  },
+
   button: {
     backgroundColor: "#333",
     marginTop: 10,
   },
-  buttonHomeText: {
-    color: "#FFFFFF",
-    fontSize: 28,
-  },
-  buttontext: {
+  ontext: {
     color: "#FFFFFF",
     fontSize: 20,
   },

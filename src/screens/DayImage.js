@@ -1,35 +1,19 @@
 import {
   Container,
-  Form,
-  Input,
-  Item,
   H1,
   H3,
-  H4,
-  H5,
   Body,
   Button,
-  Center,
   Spinner,
   Icon,
   Left,
-  Thumbnail,
-  Header,
   Content,
   Card,
   CardItem,
   Right,
 } from "native-base";
 import React, { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  ImageBackground,
-  Dimensions,
-  FlatList,
-} from "react-native";
+import { StyleSheet, View, Text, Image, Dimensions } from "react-native";
 
 import { Col, Row, Grid } from "react-native-easy-grid";
 import backend from "../api/backend";
@@ -85,11 +69,14 @@ const DayImage = () => {
           style={{ height: 1000 }}
         />
       </Grid>
-      <Content style={{marginTop: "-55%",}}>
+      <Content style={{ marginTop: "-55%" }}>
         <Card>
           <CardItem>
             <Left>
-            <Image source={require("../../assets/Camera.jpg")} style={{ height: 70, width: 50, marginLeft: -10}}/>
+              <Image
+                source={require("../../assets/Camera.jpg")}
+                style={{ height: 70, width: 50, marginLeft: -10 }}
+              />
               <Body>
                 <H1>{dayImage.title}</H1>
                 <Text>copyright: {dayImage.copyright}</Text>
@@ -163,7 +150,6 @@ const styles = StyleSheet.create({
     width: width,
     height: "12%",
     resizeMode: "contain",
-    //marginTop: 20,
   },
 });
 
