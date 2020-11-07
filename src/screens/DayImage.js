@@ -1,3 +1,4 @@
+// Importar los modulos necesarios
 import {
   Container,
   H1,
@@ -19,14 +20,17 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import backend from "../api/backend";
 import getEnvVars from "../../enviroment";
 
+//Variables que necesitaremos importar de enviorment
 const { apiKey, apiImageUrl } = getEnvVars();
 
+//Dimenciones de la pantalla
 const { width, height } = Dimensions.get("window");
 
 const DayImage = () => {
   // Estado
   const [dayImage, setMartsRobots] = useState(null);
 
+  //Funcion que retorna un numero aleatorio entre los maximos y minimos
   function numeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
@@ -50,6 +54,7 @@ const DayImage = () => {
     getMarsRobot();
   }, []);
 
+  // si no se recibe una imagen del dia solo retornara el spinner
   if (!dayImage) {
     return (
       <View style={{ flex: 1, justifyContent: "center" }}>
@@ -58,9 +63,10 @@ const DayImage = () => {
     );
   }
   return (
+    //se mostraran cada uno de los elementos recorriendo la posision del elemento dentro del arreglo
     <Container>
       <Image
-        source={require("../../assets/SuperNova.png")}
+        source={require("../../assets/SuperNova.png")} //logo de la parte superior
         style={styles.photoImage}
       />
       <Grid>
@@ -116,6 +122,7 @@ const DayImage = () => {
   );
 };
 
+// Estilos de la pagina
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -153,4 +160,5 @@ const styles = StyleSheet.create({
   },
 });
 
+//exportamos la pantalla
 export default DayImage;

@@ -1,3 +1,4 @@
+// Importar los modulos necesarios
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -6,9 +7,10 @@ import { Input, Container, Form, Item, H1, Button, Icon } from "native-base";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import GalleryScreen from "./GalleryScreen";
 
-//destructuring
+// Dimensiones de la pantalla
 const { width, height } = Dimensions.get("window");
-//renderizar pantalla
+
+// Renderizar pantalla
 const MainScreen = ({ route, navigation }) => {
   return (
     //backgroundcolor el color de fondo
@@ -56,7 +58,7 @@ const MainScreen = ({ route, navigation }) => {
   );
 };
 
-//estilos de la pantalla
+// Estilos de la pantalla
 const styles = StyleSheet.create({
   container: {
     flex: 1,
