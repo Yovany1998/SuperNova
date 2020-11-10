@@ -78,10 +78,10 @@ const GalleryScreen = ({ route, navigation }) => {
       <Grid>
         <Image
           source={require("../../assets/portada2.jpg")}
-          style={{ height: 1000 }}
+          style={styles.wallpaper}
         />
       </Grid>
-      <H1>
+      <H1 style={{ color: "#FFFFFF", textAlign: "center", fontSize: 28,}}>
         Resultados encontrados de {search} son {gallery.collection.items.length}
       </H1>
       <FlatList
@@ -91,7 +91,7 @@ const GalleryScreen = ({ route, navigation }) => {
         ListEmptyComponent={<Text>¡No se han encontrado nada!</Text>}
         renderItem={({ item }) => {
           return (
-            <View>
+            <View style={styles.container}>
               <Card style={{ marginTop: 50 }}>
                 <CardItem style={{ backgroundColor: "#FFFFFF" }}>
                   <CardItem>
@@ -153,15 +153,17 @@ const GalleryScreen = ({ route, navigation }) => {
 //Estilos de la pantalla
 const styles = StyleSheet.create({
   container: {
+    marginTop: "1%",
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
 
   marsphoto: {
-    height: 600,
-    width: null,
     flex: 1,
+    width: width,
+    height: height * 0.3,
+    resizeMode: "contain",
   },
   photo: {
     width: width,
@@ -179,6 +181,10 @@ const styles = StyleSheet.create({
     height: "12%",
     resizeMode: "contain",
   },
+  wallpaper: {
+    flex: 1,
+    height: height * 0.8,
+  }
 });
 
 //exportamos la pantalla

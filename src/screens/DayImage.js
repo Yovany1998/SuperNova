@@ -72,7 +72,7 @@ const DayImage = () => {
       <Grid>
         <Image
           source={require("../../assets/portada2.jpg")}
-          style={{ height: 1000 }}
+          style={styles.wallpaper}
         />
       </Grid>
       <Content style={{ marginTop: "-55%" }}>
@@ -93,7 +93,7 @@ const DayImage = () => {
           <CardItem cardBody>
             <Image
               source={{ uri: `${dayImage.url}` }}
-              style={{ height: 300, width: null, flex: 1 }}
+              style={styles.dayImage}
             />
           </CardItem>
           <H3>Caption</H3>
@@ -158,6 +158,16 @@ const styles = StyleSheet.create({
     height: "12%",
     resizeMode: "contain",
   },
+  dayImage: {
+    flex: 1,
+    width: width,
+    height: height * 0.3,
+    resizeMode: "contain",
+  },
+  wallpaper: {
+    flex: 1,
+    height: height * 0.9,
+  }
 });
 
 //exportamos la pantalla

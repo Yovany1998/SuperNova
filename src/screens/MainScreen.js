@@ -21,7 +21,7 @@ const MainScreen = ({ route, navigation }) => {
         <Grid>
           <Image
             source={require("../../assets/portada2.jpg")}
-            style={{ height: 1000 }}
+            style={styles.wallpaper}
           />
         </Grid>
         <H1 style={styles.title}>Choose an Option</H1>
@@ -30,7 +30,7 @@ const MainScreen = ({ route, navigation }) => {
           style={styles.buttonCenter}
           block
         >
-          <Text style={styles.buttonName}>Search in gallery</Text>
+          <Text style={styles.buttonName}>Search in Gallery </Text>
           <Entypo name="folder-images" size={30} color="black" />
         </Button>
 
@@ -90,7 +90,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: "12%",
+    //flex: 6,
   },
+  wallpaper: {
+    flex: 1,
+    height: height * 0.9,
+  }
 });
 
 export default MainScreen;

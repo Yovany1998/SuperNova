@@ -21,7 +21,10 @@ import {
   CardItem,
   H3,
   Body,
+  Form,
 } from "native-base";
+import { Col, Row, Grid } from "react-native-easy-grid";
+
 
 // Obtener los valores por destructuring
 const { width, height } = Dimensions.get("window");
@@ -49,20 +52,31 @@ const SearchInLibrary = ({ navigation }) => {
         source={require("../../assets/SuperNova.png")}
         style={styles.logoApp}
       />
-
-      <Header searchBar>
-        <Item>
-          <Input
-            placeholder="Buscar"
-            value={search}
-            onChangeText={setSearch}
-            style={searchError ? styles.inputError : null}
+      <Form>
+        <Header searchBar style={styles.buscador}>
+          <Item >
+            <Input
+              placeholder="Buscar"
+              value={search}
+              onChangeText={setSearch}
+              style={searchError ? styles.inputError : null}
+            />
+            <Button icon onPress={handlerSearch} searchBar style={styles.buscador}>
+              <Icon name="search" />
+            </Button>
+          </Item>
+        </Header>
+      
+        <Grid>
+          <Image
+            source={require("../../assets/portada2.jpg")}
+            style={styles.wallpaper}
           />
-          <Button icon onPress={handlerSearch}>
-            <Icon name="search" />
-          </Button>
-        </Item>
-      </Header>
+        </Grid>
+      </Form>
+
+      
+
     </Container>
   );
 };
@@ -89,7 +103,7 @@ const styles = StyleSheet.create({
   },
   logoApp: {
     width: width,
-    height: height * 0.15,
+    height: "12%",
     resizeMode: "contain",
   },
   inputError: {
@@ -97,6 +111,19 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     color: "red",
   },
+  buscador: {
+    backgroundColor: "#333",
+  },
+  title: {
+    marginTop: "12%",
+    textAlign: "center",
+    color: "white",
+    fontSize: 130,
+  },
+  wallpaper: {
+    flex: 1,
+    height: height * 0.8,
+  }
 });
 
 export default SearchInLibrary;

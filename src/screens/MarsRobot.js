@@ -79,7 +79,7 @@ const MarsRobot = () => {
       <Grid>
         <Image
           source={require("../../assets/portada2.jpg")}
-          style={{ height: 1000 }}
+          style={styles.wallpaper}
         />
       </Grid>
       <FlatList
@@ -156,9 +156,10 @@ const styles = StyleSheet.create({
   },
 
   marsphoto: {
-    height: 600,
-    width: null,
     flex: 1,
+    width: width,
+    height: height * 0.3,
+    resizeMode: "contain",
   },
   photo: {
     width: width,
@@ -176,6 +177,10 @@ const styles = StyleSheet.create({
     height: "12%",
     resizeMode: "contain",
   },
+  wallpaper: {
+    flex: 1,
+    height: height * 0.9,
+  }
 });
 
 //exportamos la pantalla
