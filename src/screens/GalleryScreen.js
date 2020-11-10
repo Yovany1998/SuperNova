@@ -82,13 +82,12 @@ const GalleryScreen = ({ route, navigation }) => {
         />
       </Grid>
       <H1 style={{ color: "#FFFFFF", textAlign: "center", fontSize: 28,}}>
-        Resultados encontrados de {search} son {gallery.collection.items.length}
+        Results found for {search} are: {gallery.collection.items.length}
       </H1>
       <FlatList
         data={gallery.collection.items}
         keyExtractor={(item) => item.data[0].nasa_id}
         //keyExtractor={(item) => item.id}
-        ListEmptyComponent={<Text>¡No se han encontrado nada!</Text>}
         renderItem={({ item }) => {
           return (
             <View style={styles.container}>
@@ -98,7 +97,7 @@ const GalleryScreen = ({ route, navigation }) => {
                     <Left>
                       <Image
                         source={require("../../assets/Hubble.png")}
-                        style={{ height: 50, width: 50, marginLeft: -10 }}
+                        style={{ height: 50, width: 50, marginLeft: -20 }}
                       />
                       <Body>
                         <Text>Title: {item.data[0].title}</Text>
@@ -121,25 +120,25 @@ const GalleryScreen = ({ route, navigation }) => {
                 <CardItem>
                   <Body>
                     <Text>Type: {item.data[0].media_type}</Text>
-                    <Text>description: {item.data[0].description}</Text>
+                    <Text style={styles.description}>Description: {item.data[0].description}</Text>
                   </Body>
                 </CardItem>
                 <CardItem style={{ backgroundColor: "#FFFFFF" }}>
                   <Left>
                     <Button transparent>
                       <Icon active name="thumbs-up" />
-                      <Text>{numeroAleatorio(1, 1000)} Likes</Text>
+                      <Text> {numeroAleatorio(1, 1000)} Likes</Text>
                     </Button>
                   </Left>
-                  <Body>
+                  <Left>
                     <Button transparent>
                       <Icon active name="chatbubbles" />
-                      <Text> {numeroAleatorio(1, 100)}Comments</Text>
+                      <Text> {numeroAleatorio(1, 100)} Comments</Text>
                     </Button>
-                  </Body>
-                  <Right>
-                    <Text>{numeroAleatorio(1, 24)}h ago</Text>
-                  </Right>
+                  </Left>
+                  <Left>
+                    <Text>        {numeroAleatorio(1, 24)} h ago</Text>
+                  </Left>
                 </CardItem>
               </Card>
             </View>
@@ -153,15 +152,19 @@ const GalleryScreen = ({ route, navigation }) => {
 //Estilos de la pantalla
 const styles = StyleSheet.create({
   container: {
-    marginTop: "1%",
     flex: 1,
+    marginLeft: "5%",
+    marginRight: "5%",
     justifyContent: "center",
     alignItems: "center",
   },
 
   marsphoto: {
+    marginTop: -30,
+    marginBottom: -30,
     flex: 1,
-    width: width,
+    //width: 1000,
+    //height: 500,
     height: height * 0.3,
     resizeMode: "contain",
   },
@@ -183,8 +186,11 @@ const styles = StyleSheet.create({
   },
   wallpaper: {
     flex: 1,
-    height: height * 0.8,
-  }
+    height: height * 0.9,
+  },
+  description: {
+    textAlign: "left" ,
+  },
 });
 
 //exportamos la pantalla

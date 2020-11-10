@@ -75,8 +75,8 @@ const DayImage = () => {
           style={styles.wallpaper}
         />
       </Grid>
-      <Content style={{ marginTop: "-55%" }}>
-        <Card>
+      <Content style={{ marginTop: "-60%" }}>
+        <Card style={styles.container}>
           <CardItem>
             <Left>
               <Image
@@ -84,7 +84,7 @@ const DayImage = () => {
                 style={{ height: 70, width: 50, marginLeft: -10 }}
               />
               <Body>
-                <H1>{dayImage.title}</H1>
+                <Text>{dayImage.title}</Text>
                 <Text>copyright: {dayImage.copyright}</Text>
                 <Text note>date: {dayImage.date} </Text>
               </Body>
@@ -96,25 +96,25 @@ const DayImage = () => {
               style={styles.dayImage}
             />
           </CardItem>
-          <H3>Caption</H3>
-          <Text>{dayImage.explanation}</Text>
+          <Text>Caption</Text>
+          <Text style={styles.description} >{dayImage.explanation}</Text>
 
           <CardItem>
-            <Left>
-              <Button transparent>
-                <Icon active name="thumbs-up" />
-                <Text>{numeroAleatorio(1, 1000)} Likes</Text>
-              </Button>
-            </Left>
-            <Body>
-              <Button transparent>
-                <Icon active name="chatbubbles" />
-                <Text>{numeroAleatorio(1, 1000)} Comments</Text>
-              </Button>
-            </Body>
-            <Right>
-              <Text>{numeroAleatorio(1, 24)} h ago</Text>
-            </Right>
+          <Left>
+            <Button transparent>
+              <Icon active name="thumbs-up" />
+                <Text> {numeroAleatorio(1, 1000)} Likes</Text>
+            </Button>
+          </Left>
+          <Left>
+            <Button transparent>
+              <Icon active name="chatbubbles" />
+                <Text> {numeroAleatorio(1, 100)} Comments</Text>
+            </Button>
+          </Left>
+          <Left>
+            <Text>        {numeroAleatorio(1, 24)} h ago</Text>
+          </Left>
           </CardItem>
         </Card>
       </Content>
@@ -126,6 +126,8 @@ const DayImage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginLeft: "5%",
+    marginRight: "5%",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -160,14 +162,19 @@ const styles = StyleSheet.create({
   },
   dayImage: {
     flex: 1,
-    width: width,
+    //width: 1000,
+    //height: 500,
     height: height * 0.3,
     resizeMode: "contain",
   },
   wallpaper: {
     flex: 1,
     height: height * 0.9,
-  }
+  },
+  description: {
+    marginLeft: "2%",
+    textAlign: "left",
+  },
 });
 
 //exportamos la pantalla

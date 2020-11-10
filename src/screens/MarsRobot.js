@@ -89,14 +89,14 @@ const MarsRobot = () => {
         ListEmptyComponent={<Text>¡No se han encontrado nada!</Text>}
         renderItem={({ item }) => {
           return (
-            <View>
+            <View style={styles.container}>
               <Card style={{ marginTop: 50 }}>
                 <CardItem style={{ backgroundColor: "#FFFFFF" }}>
                   <CardItem>
                     <Left>
                       <Image
                         source={require("../../assets/Wall-E.png")}
-                        style={{ height: 50, width: 50, marginLeft: -10 }}
+                        style={{ height: 50, width: 50, marginLeft: -20 }}
                       />
                       <Body>
                         <Text>Full name: {item.camera.full_name}</Text>
@@ -125,18 +125,18 @@ const MarsRobot = () => {
                   <Left>
                     <Button transparent>
                       <Icon active name="thumbs-up" />
-                      <Text>{numeroAleatorio(1, 1000)} Likes</Text>
+                      <Text> {numeroAleatorio(1, 1000)} Likes</Text>
                     </Button>
                   </Left>
-                  <Body>
+                  <Left>
                     <Button transparent>
                       <Icon active name="chatbubbles" />
-                      <Text> {numeroAleatorio(1, 100)}Comments</Text>
+                      <Text> {numeroAleatorio(1, 100)} Comments</Text>
                     </Button>
-                  </Body>
-                  <Right>
-                    <Text>{numeroAleatorio(1, 24)}h ago</Text>
-                  </Right>
+                  </Left>
+                  <Left>
+                    <Text>        {numeroAleatorio(1, 24)}h ago</Text>
+                  </Left>
                 </CardItem>
               </Card>
             </View>
@@ -151,13 +151,16 @@ const MarsRobot = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginLeft: "5%",
+    marginRight: "5%",
     justifyContent: "center",
     alignItems: "center",
   },
 
   marsphoto: {
+    marginTop: -30,
+    marginBottom: -30,
     flex: 1,
-    width: width,
     height: height * 0.3,
     resizeMode: "contain",
   },
