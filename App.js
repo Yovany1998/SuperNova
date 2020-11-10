@@ -5,6 +5,7 @@ import MarsRobot from "./src/screens/MarsRobot";
 import DayImage from "./src/screens/DayImage";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
+import SearchInLibrary from "./src/screens/SearchInLibrary";
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ export default function App() {
         <Stack.Screen name="MarsRobot" component={MarsRobot} />
         <Stack.Screen name="DayImage" component={DayImage} />
         <Stack.Screen name="GalleryScreen" component={GalleryScreen} />
+        <Stack.Screen name="SearchInLibrary" component={SearchInLibrary} />
       </Stack.Navigator>
     </NavigationContainer>
   );

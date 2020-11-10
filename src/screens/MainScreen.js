@@ -1,4 +1,3 @@
-// Importar los modulos necesarios
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -7,10 +6,9 @@ import { Input, Container, Form, Item, H1, Button, Icon } from "native-base";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import GalleryScreen from "./GalleryScreen";
 
-// Dimensiones de la pantalla
+//destructuring
 const { width, height } = Dimensions.get("window");
-
-// Renderizar pantalla
+//renderizar pantalla
 const MainScreen = ({ route, navigation }) => {
   return (
     //backgroundcolor el color de fondo
@@ -28,13 +26,14 @@ const MainScreen = ({ route, navigation }) => {
         </Grid>
         <H1 style={styles.title}>Choose an Option</H1>
         <Button
-          onPress={() => navigation.navigate("GalleryScreen")}
+          onPress={() => navigation.navigate("SearchInLibrary")}
           style={styles.buttonCenter}
           block
         >
-          <Text style={styles.buttonName}>Gallery </Text>
+          <Text style={styles.buttonName}>Search in gallery</Text>
           <Entypo name="folder-images" size={30} color="black" />
         </Button>
+
         <Button
           onPress={() => navigation.navigate("MarsRobot")}
           style={styles.buttonCenter}
@@ -58,7 +57,7 @@ const MainScreen = ({ route, navigation }) => {
   );
 };
 
-// Estilos de la pantalla
+//estilos de la pantalla
 const styles = StyleSheet.create({
   container: {
     flex: 1,
