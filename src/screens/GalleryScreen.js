@@ -20,7 +20,7 @@ import {
   Dimensions,
   FlatList,
 } from "react-native";
-
+import { Video } from 'expo-av';
 import backend from "../api/backendImage";
 import getEnvVars from "../../enviroment";
 import { Grid } from "react-native-easy-grid";
@@ -68,6 +68,51 @@ const GalleryScreen = ({ route, navigation }) => {
     );
   }
 
+  let video;
+  let videos = `video`;
+  const extension = "~orig.mp4";
+
+  function tipo(item) {
+    
+    if (item.data[0].media_type === videos) {
+        let video1 = item.href
+        let video2 = video1.slice(0, -16);
+        let video3 = video1.slice(36, -16)
+
+        video2 += video3 + extension
+        //video2 += extension
+        
+        video = 
+        <Video
+                  source={{ uri: `${video2}` }}
+                  rate={1.0}
+                  volume={1.0}
+                  isMuted={false}
+                  resizeMode="cover"
+                  shouldPlay
+                  isLooping={true}
+                  //style={{ width: 300, height: 300 }}
+                  style={styles.marsphoto}
+                />
+
+        //video = <Text>corriendo:{video2}</Text>
+    }else{
+        video = <Image
+        source={{
+          uri: `${item.links[0].href}`,
+        }}
+        style={styles.marsphoto}
+       />
+
+    }
+    console.log(video);
+    return (
+      video
+    );
+  }
+
+  console.log(gallery.collection.items[0].href[0])
+
   return (
     <Container>
       <Image
@@ -110,12 +155,7 @@ const GalleryScreen = ({ route, navigation }) => {
                   </CardItem>
                 </CardItem>
                 <CardItem>
-                  <Image
-                    source={{
-                      uri: `${item.links[0].href}`,
-                    }}
-                    style={styles.marsphoto}
-                  />
+                  {tipo(item)}
                 </CardItem>
                 <CardItem>
                   <Body>
