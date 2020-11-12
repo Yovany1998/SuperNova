@@ -12,18 +12,16 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MainScreen">
+      <Stack.Navigator initialRouteName="Main Screen">
         <Stack.Screen 
-          name="Main Screen" 
+          name="Main screen" 
           component={MainScreen} 
           options={{
-            headerTintColor: '#FFFFFF',
-            headerStyle: {
-              backgroundColor: '#333',
-            },
-          }} />
+            headerShown: false,
+          }}
+        />
         <Stack.Screen 
-          name="Mars Rover" 
+          name="Mars rover" 
           component={MarsRobot} 
           options={{
             headerTintColor: '#FFFFFF',
@@ -33,7 +31,7 @@ export default function App() {
           }}
           />
         <Stack.Screen 
-          name="Day Image" 
+          name="Day image" 
           component={DayImage} 
           options={{
             headerTintColor: '#FFFFFF',
@@ -53,7 +51,7 @@ export default function App() {
           }}
           />
         <Stack.Screen 
-          name="Search In Library" 
+          name="Search in library" 
           component={SearchInLibrary} 
           options={{
             headerTintColor: '#FFFFFF',

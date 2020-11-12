@@ -84,16 +84,16 @@ const GalleryScreen = ({ route, navigation }) => {
         
         video = 
         <Video
-                  source={{ uri: `${video2}` }}
-                  rate={1.0}
-                  volume={1.0}
-                  isMuted={false}
-                  resizeMode="cover"
-                  shouldPlay
-                  isLooping={true}
-                  //style={{ width: 300, height: 300 }}
-                  style={styles.marsphoto}
-                />
+          source={{ uri: `${video2}` }}
+          rate={1.0}
+          volume={1.0}
+          isMuted={false}
+          resizeMode="cover"
+          shouldPlay
+          isLooping={true}
+          //style={{ width: 300, height: 300 }}
+          style={styles.marsphoto}
+        />
 
         //video = <Text>corriendo:{video2}</Text>
     }else{
@@ -126,8 +126,8 @@ const GalleryScreen = ({ route, navigation }) => {
           style={styles.wallpaper}
         />
       </Grid>
-      <H1 style={{ color: "#FFFFFF", textAlign: "center", fontSize: 28,}}>
-        Results found for {search} are: {gallery.collection.items.length}
+      <H1 style={{ color: "#FFFFFF", textAlign: "center", fontSize: 23, marginTop: "3%", marginBottom: "3%"}}>
+        Results found for {search}: {gallery.collection.items.length}
       </H1>
       <FlatList
         data={gallery.collection.items}
@@ -145,10 +145,10 @@ const GalleryScreen = ({ route, navigation }) => {
                         style={{ height: 50, width: 50, marginLeft: -20 }}
                       />
                       <Body>
-                        <Text>Title: {item.data[0].title}</Text>
-                        <Text note>Nasa Id: {item.data[0].nasa_id}</Text>
+                        <Text><Text style={styles.negritas}>Title:</Text> {item.data[0].title}</Text>
+                        <Text note><Text style={styles.negritas}>Nasa Id:</Text> {item.data[0].nasa_id}</Text>
                         <Text note>
-                          Date Created: {item.data[0].date_created}
+                          <Text style={styles.negritas}>Date created:</Text> {item.data[0].date_created}
                         </Text>
                       </Body>
                     </Left>
@@ -159,26 +159,29 @@ const GalleryScreen = ({ route, navigation }) => {
                 </CardItem>
                 <CardItem>
                   <Body>
-                    <Text>Type: {item.data[0].media_type}</Text>
-                    <Text style={styles.description}>Description: {item.data[0].description}</Text>
+                    <Text><Text style={styles.negritas}>Type:</Text> {item.data[0].media_type}</Text>
+                    <Text style={styles.description}><Text style={styles.negritas}>Description:</Text> {item.data[0].description}</Text>
                   </Body>
                 </CardItem>
                 <CardItem style={{ backgroundColor: "#FFFFFF" }}>
-                  <Left>
-                    <Button transparent>
+                  <Body>
+                    <Body transparent>
                       <Icon active name="thumbs-up" />
                       <Text> {numeroAleatorio(1, 1000)} Likes</Text>
-                    </Button>
-                  </Left>
-                  <Left>
-                    <Button transparent>
+                    </Body>
+                  </Body>
+                  <Body>
+                    <Body transparent>
                       <Icon active name="chatbubbles" />
                       <Text> {numeroAleatorio(1, 100)} Comments</Text>
-                    </Button>
-                  </Left>
-                  <Left>
-                    <Text>        {numeroAleatorio(1, 24)} h ago</Text>
-                  </Left>
+                    </Body>
+                  </Body>
+                  <Body>
+                    <Body transparent>
+                      <Icon active name="watch" />
+                      <Text> {numeroAleatorio(1, 24)} h ago</Text>
+                    </Body>
+                  </Body>
                 </CardItem>
               </Card>
             </View>
@@ -198,7 +201,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
+  negritas:{
+    fontWeight: "bold",
+  },
   marsphoto: {
     marginTop: -30,
     marginBottom: -30,
@@ -229,7 +234,7 @@ const styles = StyleSheet.create({
     height: height * 0.9,
   },
   description: {
-    textAlign: "left" ,
+    textAlign: "justify",
   },
 });
 

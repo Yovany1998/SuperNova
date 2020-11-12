@@ -58,7 +58,7 @@ const SearchInLibrary = ({ navigation }) => {
         <Header searchBar style={styles.buscador}>
           <Item>
             <Input
-              placeholder="Buscar"
+              placeholder="Search..."
               value={search}
               onChangeText={setSearch}
               style={searchError ? styles.inputError : null}
@@ -76,7 +76,7 @@ const SearchInLibrary = ({ navigation }) => {
           />
         </Grid>
 
-        <H1 style={styles.title}>Search Recomendations</H1>
+        <H1 style={styles.title}>Search recomendations</H1>
         <View style={styles.container}>
           <Card style={{ marginTop: "10%" }}>
             <CardItem style={{ backgroundColor: "#FFFFFF" }}>
@@ -93,7 +93,7 @@ const SearchInLibrary = ({ navigation }) => {
                   source={require("../../assets/darkmatter.jpg")}
                   style={{ height: 50, width: 50,}}
                 />
-               <H1 style={styles.suggestion}>Dark Matter</H1>
+               <H1 style={styles.suggestion}>Dark matter</H1>
             </CardItem>
           </Card>
           <Card style={{ marginTop: "5%" }}>
@@ -102,7 +102,7 @@ const SearchInLibrary = ({ navigation }) => {
                   source={require("../../assets/blackhole.jpg")}
                   style={{ height: 50, width: 50,}}
                 />
-               <H1 style={styles.suggestion}>Black Hole</H1>
+               <H1 style={styles.suggestion}>Black hole</H1>
             </CardItem>
           </Card>
         </View>

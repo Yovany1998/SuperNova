@@ -84,9 +84,9 @@ const DayImage = () => {
                 style={{ height: 70, width: 50, marginLeft: -10 }}
               />
               <Body>
-                <Text>{dayImage.title}</Text>
-                <Text>copyright: {dayImage.copyright}</Text>
-                <Text note>date: {dayImage.date} </Text>
+                <Text><Text style={styles.negritas}>Title: </Text>{dayImage.title}</Text>
+                <Text><Text style={styles.negritas}>Copyright: </Text>{dayImage.copyright}</Text>
+                <Text note><Text style={styles.negritas}>Date: </Text>{dayImage.date} </Text>
               </Body>
             </Left>
           </CardItem>
@@ -96,25 +96,27 @@ const DayImage = () => {
               style={styles.dayImage}
             />
           </CardItem>
-          <Text>Caption</Text>
-          <Text style={styles.description} >{dayImage.explanation}</Text>
+          <Text style={styles.description}><Text style={styles.negritas}>Caption: </Text>{dayImage.explanation}</Text>
 
           <CardItem>
-          <Left>
-            <Button transparent>
+          <Body>
+            <Body transparent>
               <Icon active name="thumbs-up" />
-                <Text> {numeroAleatorio(1, 1000)} Likes</Text>
-            </Button>
-          </Left>
-          <Left>
-            <Button transparent>
+              <Text> {numeroAleatorio(1, 1000)} Likes</Text>
+            </Body>
+          </Body>
+          <Body>
+            <Body transparent>
               <Icon active name="chatbubbles" />
-                <Text> {numeroAleatorio(1, 100)} Comments</Text>
-            </Button>
-          </Left>
-          <Left>
-            <Text>        {numeroAleatorio(1, 24)} h ago</Text>
-          </Left>
+              <Text> {numeroAleatorio(1, 100)} Comments</Text>
+            </Body>
+          </Body>
+          <Body>
+            <Body transparent>
+              <Icon active name="watch" />
+              <Text> {numeroAleatorio(1, 24)} h ago</Text>
+            </Body>
+          </Body>
           </CardItem>
         </Card>
       </Content>
@@ -130,6 +132,9 @@ const styles = StyleSheet.create({
     marginRight: "5%",
     justifyContent: "center",
     alignItems: "center",
+  },
+  negritas:{
+    fontWeight: "bold",
   },
   input: {
     margin: 15,
@@ -173,7 +178,8 @@ const styles = StyleSheet.create({
   },
   description: {
     marginLeft: "2%",
-    textAlign: "left",
+    marginRight: "2%",
+    textAlign: "center",
   },
 });
 

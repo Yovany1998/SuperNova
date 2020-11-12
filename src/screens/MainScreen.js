@@ -25,32 +25,32 @@ const MainScreen = ({ route, navigation }) => {
             style={styles.wallpaper}
           />
         </Grid>
-        <H1 style={styles.title}>Choose an Option</H1>
+        <H1 style={styles.title}>Choose an option</H1>
         <Button
-          onPress={() => navigation.navigate("Search In Library")}
+          onPress={() => navigation.navigate("Search in library")}
           style={styles.buttonCenter}
           block
         >
-          <Text style={styles.buttonName}>Search in Gallery </Text>
+          <Text style={styles.buttonName}>Search in gallery </Text>
           <Entypo name="folder-images" size={30} color="black" />
         </Button>
 
         <Button
-          onPress={() => navigation.navigate("Mars Rover")}
+          onPress={() => navigation.navigate("Mars rover")}
           style={styles.buttonCenter}
           block
           blue
         >
-          <Text style={styles.buttonName}>Mars Rover </Text>
+          <Text style={styles.buttonName}>Mars rover </Text>
           <AntDesign name="android" size={30} color="black" />
         </Button>
         <Button
-          onPress={() => navigation.navigate("Day Image")}
+          onPress={() => navigation.navigate("Day image")}
           style={styles.buttonCenter}
           block
           blue
         >
-          <Text style={styles.buttonName}>Image of the Day </Text>
+          <Text style={styles.buttonName}>Image of the day </Text>
           <Entypo name="camera" size={30} color="black" />
         </Button>
       </Form>

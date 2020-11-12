@@ -99,8 +99,8 @@ const MarsRobot = () => {
                         style={{ height: 50, width: 50, marginLeft: -20 }}
                       />
                       <Body>
-                        <Text>Full name: {item.camera.full_name}</Text>
-                        <Text note>Earth date: {item.earth_date}</Text>
+                        <Text><Text style={styles.negritas}>Full name:</Text> {item.camera.full_name}</Text>
+                        <Text note><Text style={styles.negritas}>Earth date:</Text> {item.earth_date}</Text>
                       </Body>
                     </Left>
                   </CardItem>
@@ -115,28 +115,31 @@ const MarsRobot = () => {
                 </CardItem>
                 <CardItem>
                   <Body>
-                    <Text>Code: {item.id}</Text>
+                    <Text><Text style={styles.negritas}>Code:</Text> {item.id}</Text>
 
-                    <Text>Landing date: {item.rover.landing_date}</Text>
-                    <Text>Launch date: {item.rover.launch_date}</Text>
+                    <Text><Text style={styles.negritas}>Landing date:</Text> {item.rover.landing_date}</Text>
+                    <Text><Text style={styles.negritas}>Launch date:</Text> {item.rover.launch_date}</Text>
                   </Body>
                 </CardItem>
                 <CardItem style={{ backgroundColor: "#FFFFFF" }}>
-                  <Left>
-                    <Button transparent>
+                <Body>
+                    <Body transparent>
                       <Icon active name="thumbs-up" />
                       <Text> {numeroAleatorio(1, 1000)} Likes</Text>
-                    </Button>
-                  </Left>
-                  <Left>
-                    <Button transparent>
+                    </Body>
+                  </Body>
+                  <Body>
+                    <Body transparent>
                       <Icon active name="chatbubbles" />
                       <Text> {numeroAleatorio(1, 100)} Comments</Text>
-                    </Button>
-                  </Left>
-                  <Left>
-                    <Text>        {numeroAleatorio(1, 24)}h ago</Text>
-                  </Left>
+                    </Body>
+                  </Body>
+                  <Body>
+                    <Body transparent>
+                      <Icon active name="watch" />
+                      <Text> {numeroAleatorio(1, 24)} h ago</Text>
+                    </Body>
+                  </Body>
                 </CardItem>
               </Card>
             </View>
@@ -156,7 +159,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
+  negritas:{
+    fontWeight: "bold",
+  },
   marsphoto: {
     marginTop: -30,
     marginBottom: -30,
