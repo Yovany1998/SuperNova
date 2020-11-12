@@ -3,7 +3,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
 import { Input, Container, Form, Item, H1, Button, Icon } from "native-base";
-import { Col, Row, Grid } from "react-native-easy-grid";
+import { Grid } from "react-native-easy-grid";
 import GalleryScreen from "./GalleryScreen";
 
 //destructuring
@@ -26,7 +26,7 @@ const MainScreen = ({ route, navigation }) => {
         </Grid>
         <H1 style={styles.title}>Choose an Option</H1>
         <Button
-          onPress={() => navigation.navigate("SearchInLibrary")}
+          onPress={() => navigation.navigate("Search In Library")}
           style={styles.buttonCenter}
           block
         >
@@ -35,7 +35,7 @@ const MainScreen = ({ route, navigation }) => {
         </Button>
 
         <Button
-          onPress={() => navigation.navigate("MarsRobot")}
+          onPress={() => navigation.navigate("Mars Rover")}
           style={styles.buttonCenter}
           block
           blue
@@ -44,7 +44,7 @@ const MainScreen = ({ route, navigation }) => {
           <AntDesign name="android" size={30} color="black" />
         </Button>
         <Button
-          onPress={() => navigation.navigate("DayImage")}
+          onPress={() => navigation.navigate("Day Image")}
           style={styles.buttonCenter}
           block
           blue

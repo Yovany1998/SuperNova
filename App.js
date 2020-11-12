@@ -13,12 +13,57 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="MainScreen">
-        <Stack.Screen name="MainScreen" component={MainScreen} />
-        <Stack.Screen name="MarsRobot" component={MarsRobot} />
-        <Stack.Screen name="DayImage" component={DayImage} />
-        <Stack.Screen name="GalleryScreen" component={GalleryScreen} />
-        <Stack.Screen name="SearchInLibrary" component={SearchInLibrary} />
+        <Stack.Screen 
+          name="Main Screen" 
+          component={MainScreen} 
+          options={{
+            headerTintColor: '#FFFFFF',
+            headerStyle: {
+              backgroundColor: '#333',
+            },
+          }} />
+        <Stack.Screen 
+          name="Mars Rover" 
+          component={MarsRobot} 
+          options={{
+            headerTintColor: '#FFFFFF',
+            headerStyle: {
+              backgroundColor: '#333',
+            },
+          }}
+          />
+        <Stack.Screen 
+          name="Day Image" 
+          component={DayImage} 
+          options={{
+            headerTintColor: '#FFFFFF',
+            headerStyle: {
+              backgroundColor: '#333',
+            },
+          }}
+          />
+        <Stack.Screen 
+          name="Results" 
+          component={GalleryScreen} 
+          options={{
+            headerTintColor: '#FFFFFF',
+            headerStyle: {
+              backgroundColor: '#333',
+            },
+          }}
+          />
+        <Stack.Screen 
+          name="Search In Library" 
+          component={SearchInLibrary} 
+          options={{
+            headerTintColor: '#FFFFFF',
+            headerStyle: {
+              backgroundColor: '#333',
+            },
+          }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
+

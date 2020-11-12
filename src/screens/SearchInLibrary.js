@@ -37,7 +37,7 @@ const SearchInLibrary = ({ navigation }) => {
   const handlerSearch = () => {
     if (!search) setSearchError(true);
     else {
-      navigation.navigate("GalleryScreen", { search });
+      navigation.navigate("Results", { search });
       setSearchError(false);
     }
   };
