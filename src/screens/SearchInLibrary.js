@@ -22,6 +22,8 @@ import {
   H3,
   Body,
   Form,
+  Footer,
+  Left,
 } from "native-base";
 import { Col, Row, Grid } from "react-native-easy-grid";
 
@@ -54,7 +56,7 @@ const SearchInLibrary = ({ navigation }) => {
       />
       <Form>
         <Header searchBar style={styles.buscador}>
-          <Item >
+          <Item>
             <Input
               placeholder="Buscar"
               value={search}
@@ -73,10 +75,39 @@ const SearchInLibrary = ({ navigation }) => {
             style={styles.wallpaper}
           />
         </Grid>
+
+        <H1 style={styles.title}>Search Recomendations</H1>
+        <View style={styles.container}>
+          <Card style={{ marginTop: "10%" }}>
+            <CardItem style={{ backgroundColor: "#FFFFFF" }}>
+                <Image
+                  source={require("../../assets/supernova.jpg")}
+                  style={{ height: 50, width: 50,}}
+                />
+               <H1 style={styles.suggestion}>Supernova</H1>
+            </CardItem>
+          </Card>
+          <Card style={{ marginTop: "5%" }}>
+            <CardItem style={{ backgroundColor: "#FFFFFF" }}>
+                <Image
+                  source={require("../../assets/darkmatter.jpg")}
+                  style={{ height: 50, width: 50,}}
+                />
+               <H1 style={styles.suggestion}>Dark Matter</H1>
+            </CardItem>
+          </Card>
+          <Card style={{ marginTop: "5%" }}>
+            <CardItem style={{ backgroundColor: "#FFFFFF" }}>
+                <Image
+                  source={require("../../assets/blackhole.jpg")}
+                  style={{ height: 50, width: 50,}}
+                />
+               <H1 style={styles.suggestion}>Black Hole</H1>
+            </CardItem>
+          </Card>
+        </View>
+
       </Form>
-
-      
-
     </Container>
   );
 };
@@ -84,16 +115,17 @@ const SearchInLibrary = ({ navigation }) => {
 // Estilos de nuestra pantalla
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: "100%",
+    //height: height * 0.3,
     justifyContent: "center",
     alignItems: "center",
   },
+  suggestion: {
+    fontSize: 30,
+    marginLeft: "10%",
+  },
   input: {
     margin: 15,
-  },
-  movieImage: {
-    width: width * 0.99,
-    height: height * 0.5,
   },
   searchInput: {
     flex: 1,
@@ -115,10 +147,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#333",
   },
   title: {
-    marginTop: "12%",
+    marginTop: "5%",
     textAlign: "center",
     color: "white",
-    fontSize: 130,
+    fontSize: 30,
   },
   wallpaper: {
     flex: 1,
