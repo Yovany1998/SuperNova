@@ -20,12 +20,12 @@ import {
   Dimensions,
   FlatList,
 } from "react-native";
-import { Video } from 'expo-av';
+import { Video } from "expo-av";
 import backend from "../api/backendImage";
 import getEnvVars from "../../enviroment";
 import { Grid } from "react-native-easy-grid";
-//Variables que necesitaremos importar de envoriment
 
+//Variables que necesitaremos importar de envoriment para el funcionamieno de esta pantalla
 const { apisearch } = getEnvVars();
 
 //Dimenciones de la pantalla
@@ -59,7 +59,7 @@ const GalleryScreen = ({ route, navigation }) => {
     getGallery();
   }, []);
 
-  //flex en caso de que la ventana sea diferenete
+  //Spiner en caso de que la ventana sea diferenete
   if (!gallery) {
     return (
       <View style={{ flex: 1, justifyContent: "center" }}>
@@ -68,101 +68,126 @@ const GalleryScreen = ({ route, navigation }) => {
     );
   }
 
-  let video;
-  let videos = `video`;
+  let videoImagen;
+  // Extención mp4 que identifica un video de una imagen
   const extension = "~orig.mp4";
 
-  function tipo(item) {
-    
-    if (item.data[0].media_type === videos) {
-        let video1 = item.href
-        let video2 = video1.slice(0, -16);
-        let video3 = video1.slice(36, -16)
-
-        video2 += video3 + extension
-        //video2 += extension
-        
-        video = 
+  // Funcion que identifica si la api nos da un video o imagen  y ejecuta el codigo
+  // correspondiente a cada uno de los dos casos
+  function tipoDeArchivo(item) {
+    if (item.data[0].media_type === `video`) {
+      // Generamos la dirección del video fragmentandolo y
+      // concatenandolo en una nueva direccion valida para reproducilo de forma correcta
+      let urlDelVideo = item.href;
+      let fragmentoDosDeUrl = urlDelVideo.slice(0, -16);
+      let fragmentoTresDeUrl = urlDelVideo.slice(36, -16);
+      // Concatenando la nueba url del video
+      urlDelVideo = fragmentoDosDeUrl + fragmentoTresDeUrl + extension;
+      // En caso de que sea video
+      videoImagen = (
         <Video
-          source={{ uri: `${video2}` }}
+          source={{ uri: `${urlDelVideo}` }}
           rate={1.0}
           volume={1.0}
           isMuted={false}
           resizeMode="cover"
           shouldPlay
           isLooping={true}
-          //style={{ width: 300, height: 300 }}
           style={styles.marsphoto}
         />
-
-        //video = <Text>corriendo:{video2}</Text>
-    }else{
-        video = <Image
-        source={{
-          uri: `${item.links[0].href}`,
-        }}
-        style={styles.marsphoto}
-       />
-
+      );
+    } else {
+      // En caso de que sea imagen
+      videoImagen = (
+        <Image
+          source={{
+            uri: `${item.links[0].href}`,
+          }}
+          style={styles.marsphoto}
+        />
+      );
     }
-    console.log(video);
-    return (
-      video
-    );
+    return videoImagen;
   }
-
-  console.log(gallery.collection.items[0].href[0])
 
   return (
     <Container>
+      {/* logo de la app */}
       <Image
         source={require("../../assets/SuperNova.png")}
         style={styles.photoImage}
       />
-
+      {/* Imagen de fondo */}
       <Grid>
         <Image
           source={require("../../assets/portada2.jpg")}
           style={styles.wallpaper}
         />
       </Grid>
-      <H1 style={{ color: "#FFFFFF", textAlign: "center", fontSize: 23, marginTop: "3%", marginBottom: "3%"}}>
+      {/* Texto de los resultados  encontrados de dicha busqueda */}
+      <H1
+        style={{
+          color: "#FFFFFF",
+          textAlign: "center",
+          fontSize: 23,
+          marginTop: "3%",
+          marginBottom: "3%",
+        }}
+      >
+        {/* Resultado de la busqueda realizada  en SearchInLibrary */}
         Results found for {search}: {gallery.collection.items.length}
       </H1>
+
+      {/* Lista de todo el contenido que nos retorna la api */}
       <FlatList
         data={gallery.collection.items}
         keyExtractor={(item) => item.data[0].nasa_id}
-        //keyExtractor={(item) => item.id}
         renderItem={({ item }) => {
           return (
             <View style={styles.container}>
-              <Card style={{ marginTop: 50 }}>
+              <Card style={{ marginTop: 30 }}>
                 <CardItem style={{ backgroundColor: "#FFFFFF" }}>
                   <CardItem>
                     <Left>
+                      {/* Imagen de perfil  */}
                       <Image
                         source={require("../../assets/Hubble.png")}
                         style={{ height: 50, width: 50, marginLeft: -20 }}
                       />
+                      {/* Textos que ban el la parte alado de la imagen de perfil */}
                       <Body>
-                        <Text><Text style={styles.negritas}>Title:</Text> {item.data[0].title}</Text>
-                        <Text note><Text style={styles.negritas}>Nasa Id:</Text> {item.data[0].nasa_id}</Text>
+                        <Text>
+                          <Text style={styles.negritas}>Title:</Text>{" "}
+                          {item.data[0].title}
+                        </Text>
                         <Text note>
-                          <Text style={styles.negritas}>Date created:</Text> {item.data[0].date_created}
+                          <Text style={styles.negritas}>Nasa Id:</Text>{" "}
+                          {item.data[0].nasa_id}
+                        </Text>
+                        <Text note>
+                          <Text style={styles.negritas}>Date created:</Text>{" "}
+                          {item.data[0].date_created}
                         </Text>
                       </Body>
                     </Left>
                   </CardItem>
                 </CardItem>
-                <CardItem>
-                  {tipo(item)}
-                </CardItem>
+                {/* Llamamos la funcion para verificar que typo de archivo nos retorna la api */}
+                <CardItem>{tipoDeArchivo(item)}</CardItem>
+                {/* contenido abajo del cuadro de imagen o video */}
                 <CardItem>
                   <Body>
-                    <Text><Text style={styles.negritas}>Type:</Text> {item.data[0].media_type}</Text>
-                    <Text style={styles.description}><Text style={styles.negritas}>Description:</Text> {item.data[0].description}</Text>
+                    <Text>
+                      <Text style={styles.negritas}>Type:</Text>{" "}
+                      {item.data[0].media_type}
+                    </Text>
+                    <Text style={styles.description}>
+                      <Text style={styles.negritas}>Description:</Text>{" "}
+                      {item.data[0].description}
+                    </Text>
                   </Body>
                 </CardItem>
+                {/* Iconos de likes, Comments y h ago */}
                 <CardItem style={{ backgroundColor: "#FFFFFF" }}>
                   <Body>
                     <Body transparent>
@@ -201,15 +226,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  negritas:{
+  negritas: {
     fontWeight: "bold",
   },
   marsphoto: {
     marginTop: -30,
     marginBottom: -30,
     flex: 1,
-    //width: 1000,
-    //height: 500,
     height: height * 0.3,
     resizeMode: "contain",
   },

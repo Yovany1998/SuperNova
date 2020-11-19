@@ -62,6 +62,42 @@ const DayImage = () => {
       </View>
     );
   }
+  // declaramos la variable videoImagen
+  let videoImagen;
+  // Funcion de que identifica que nos devuelve la api si una imagen o
+  // un video
+  function tipoDeArchivo(dayImage) {
+    if (dayImage.media_type === `video`) {
+      // Si es video retornaria esto que lo que hace es que nos reproduce el video
+      // que nos brinda a api
+      videoImagen = (
+        <Video
+          source={{ uri: `${dayImage.url}` }}
+          rate={1.0}
+          volume={1.0}
+          isMuted={false}
+          resizeMode="cover"
+          shouldPlay
+          isLooping={true}
+          style={styles.marsphoto}
+        />
+      );
+    } else {
+      // En caso de que sea imagen retornaria esta parte que lo que hace es que muestra la imagen
+      // que nos proporciona la api
+      videoImagen = (
+        <Image
+          source={{
+            uri: `${dayImage.url}`,
+          }}
+          style={styles.marsphoto}
+        />
+      );
+    }
+    // Retornamos la variable con el valor de imagen o video
+    return videoImagen;
+  }
+
   return (
     //se mostraran cada uno de los elementos recorriendo la posision del elemento dentro del arreglo
     <Container>
@@ -69,54 +105,71 @@ const DayImage = () => {
         source={require("../../assets/SuperNova.png")} //logo de la parte superior
         style={styles.photoImage}
       />
+      {/* Imagen de fondo */}
       <Grid>
         <Image
           source={require("../../assets/portada2.jpg")}
           style={styles.wallpaper}
         />
       </Grid>
-      <Content style={{ marginTop: "-60%" }}>
+      <Content style={{ marginTop: "-70%" }}>
         <Card style={styles.container}>
           <CardItem>
             <Left>
+              {/* Imagen de perfil */}
               <Image
                 source={require("../../assets/Camera.jpg")}
                 style={{ height: 70, width: 50, marginLeft: -10 }}
               />
+              {/* Textos que aparecen ala par de la foto de perfil */}
               <Body>
-                <Text><Text style={styles.negritas}>Title: </Text>{dayImage.title}</Text>
-                <Text><Text style={styles.negritas}>Copyright: </Text>{dayImage.copyright}</Text>
-                <Text note><Text style={styles.negritas}>Date: </Text>{dayImage.date} </Text>
+                <Text>
+                  <Text style={styles.negritas}>Title: </Text>
+                  {dayImage.title}
+                </Text>
+                <Text>
+                  <Text style={styles.negritas}>Copyright: </Text>
+                  {dayImage.copyright}
+                </Text>
+
+                <Text note>
+                  <Text style={styles.negritas}>Date: </Text>
+                  {dayImage.date}{" "}
+                </Text>
               </Body>
             </Left>
           </CardItem>
           <CardItem cardBody>
-            <Image
-              source={{ uri: `${dayImage.url}` }}
-              style={styles.dayImage}
-            />
+            <CardItem>{tipoDeArchivo(dayImage)}</CardItem>
           </CardItem>
-          <Text style={styles.description}><Text style={styles.negritas}>Caption: </Text>{dayImage.explanation}</Text>
-
+          {/* Texto abajo de la imagen correcpondiente ala descripción */}
+          <Text style={styles.description}>
+            <Text style={styles.negritas}>Caption: </Text>
+            {dayImage.explanation}
+          </Text>
+          {/* Iconos de Comments, Likes,ago que aparecen abajo de la imagen */}
           <CardItem>
-          <Body>
-            <Body transparent>
-              <Icon active name="thumbs-up" />
-              <Text> {numeroAleatorio(1, 1000)} Likes</Text>
+            <Body>
+              <Body transparent>
+                <Icon active name="thumbs-up" />
+                {/* Función de numeros aleatorios para los Likes */}
+                <Text> {numeroAleatorio(1, 1000)} Likes</Text>
+              </Body>
             </Body>
-          </Body>
-          <Body>
-            <Body transparent>
-              <Icon active name="chatbubbles" />
-              <Text> {numeroAleatorio(1, 100)} Comments</Text>
+            <Body>
+              <Body transparent>
+                <Icon active name="chatbubbles" />
+                {/* Función de numeros aleatorios para los Comments */}
+                <Text> {numeroAleatorio(1, 100)} Comments</Text>
+              </Body>
             </Body>
-          </Body>
-          <Body>
-            <Body transparent>
-              <Icon active name="watch" />
-              <Text> {numeroAleatorio(1, 24)} h ago</Text>
+            <Body>
+              <Body transparent>
+                <Icon active name="watch" />
+                {/* función de numeros aleatorios para ago */}
+                <Text> {numeroAleatorio(1, 24)} h ago</Text>
+              </Body>
             </Body>
-          </Body>
           </CardItem>
         </Card>
       </Content>
@@ -133,7 +186,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  negritas:{
+  negritas: {
     fontWeight: "bold",
   },
   input: {

@@ -71,17 +71,19 @@ const MarsRobot = () => {
 
   return (
     <Container>
+      {/* imagen del logo de la pantalla */}
       <Image
         source={require("../../assets/SuperNova.png")}
         style={styles.photoImage}
       />
-
+      {/* Imagen de fondo de la pantalla */}
       <Grid>
         <Image
           source={require("../../assets/portada2.jpg")}
           style={styles.wallpaper}
         />
       </Grid>
+      {/* Lista donde se contendran todos los datos */}
       <FlatList
         data={marsrobot.photos}
         keyExtractor={(item) => item.id.toString()}
@@ -94,17 +96,26 @@ const MarsRobot = () => {
                 <CardItem style={{ backgroundColor: "#FFFFFF" }}>
                   <CardItem>
                     <Left>
+                      {/* Imagen de perfil */}
                       <Image
                         source={require("../../assets/Wall-E.png")}
                         style={{ height: 50, width: 50, marginLeft: -20 }}
                       />
+                      {/* Contenido ala par de la foto de perfil */}
                       <Body>
-                        <Text><Text style={styles.negritas}>Full name:</Text> {item.camera.full_name}</Text>
-                        <Text note><Text style={styles.negritas}>Earth date:</Text> {item.earth_date}</Text>
+                        <Text>
+                          <Text style={styles.negritas}>Full name:</Text>{" "}
+                          {item.camera.full_name}
+                        </Text>
+                        <Text note>
+                          <Text style={styles.negritas}>Earth date:</Text>{" "}
+                          {item.earth_date}
+                        </Text>
                       </Body>
                     </Left>
                   </CardItem>
                 </CardItem>
+                {/* Imagen que nos brinda la api */}
                 <CardItem>
                   <Image
                     source={{
@@ -113,30 +124,42 @@ const MarsRobot = () => {
                     style={styles.marsphoto}
                   />
                 </CardItem>
+                {/* Contenido abajo de la iamgen */}
                 <CardItem>
                   <Body>
-                    <Text><Text style={styles.negritas}>Code:</Text> {item.id}</Text>
+                    <Text>
+                      <Text style={styles.negritas}>Code:</Text> {item.id}
+                    </Text>
 
-                    <Text><Text style={styles.negritas}>Landing date:</Text> {item.rover.landing_date}</Text>
-                    <Text><Text style={styles.negritas}>Launch date:</Text> {item.rover.launch_date}</Text>
+                    <Text>
+                      <Text style={styles.negritas}>Landing date:</Text>{" "}
+                      {item.rover.landing_date}
+                    </Text>
+                    <Text>
+                      <Text style={styles.negritas}>Launch date:</Text>{" "}
+                      {item.rover.launch_date}
+                    </Text>
                   </Body>
                 </CardItem>
                 <CardItem style={{ backgroundColor: "#FFFFFF" }}>
-                <Body>
+                  <Body>
                     <Body transparent>
                       <Icon active name="thumbs-up" />
+                      {/* Funcion de numero aleatorio para los likes */}
                       <Text> {numeroAleatorio(1, 1000)} Likes</Text>
                     </Body>
                   </Body>
                   <Body>
                     <Body transparent>
                       <Icon active name="chatbubbles" />
+                      {/* Funcion de numero aleatorio para los Comments */}
                       <Text> {numeroAleatorio(1, 100)} Comments</Text>
                     </Body>
                   </Body>
                   <Body>
                     <Body transparent>
                       <Icon active name="watch" />
+                      {/* Funcion para numero aleatorio para ago */}
                       <Text> {numeroAleatorio(1, 24)} h ago</Text>
                     </Body>
                   </Body>
@@ -159,7 +182,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  negritas:{
+  negritas: {
     fontWeight: "bold",
   },
   marsphoto: {
@@ -188,7 +211,7 @@ const styles = StyleSheet.create({
   wallpaper: {
     flex: 1,
     height: height * 0.9,
-  }
+  },
 });
 
 //exportamos la pantalla

@@ -4,7 +4,7 @@ import { Entypo } from "@expo/vector-icons";
 import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
 import { Input, Container, Form, Item, H1, Button, Icon } from "native-base";
 import { Grid } from "react-native-easy-grid";
-import { Video } from 'expo-av';
+import { Video } from "expo-av";
 import GalleryScreen from "./GalleryScreen";
 
 //destructuring
@@ -14,11 +14,13 @@ const MainScreen = ({ route, navigation }) => {
   return (
     //backgroundcolor el color de fondo
     <Container style={{ backgroundColor: "#FFFFFF" }}>
+      {/* Logo de la pagina  */}
       <Image
         source={require("../../assets/SuperNova.png")}
         style={styles.photoImage}
       />
       <Form>
+        {/* imagen de fondo de la pantalla */}
         <Grid>
           <Image
             source={require("../../assets/portada2.jpg")}
@@ -26,6 +28,7 @@ const MainScreen = ({ route, navigation }) => {
           />
         </Grid>
         <H1 style={styles.title}>Choose an option</H1>
+        {/* Boton de buscar en galeria */}
         <Button
           onPress={() => navigation.navigate("Search in library")}
           style={styles.buttonCenter}
@@ -34,7 +37,7 @@ const MainScreen = ({ route, navigation }) => {
           <Text style={styles.buttonName}>Search in gallery </Text>
           <Entypo name="folder-images" size={30} color="black" />
         </Button>
-
+        {/* Boton del robot en marte */}
         <Button
           onPress={() => navigation.navigate("Mars rover")}
           style={styles.buttonCenter}
@@ -44,6 +47,7 @@ const MainScreen = ({ route, navigation }) => {
           <Text style={styles.buttonName}>Mars rover </Text>
           <AntDesign name="android" size={30} color="black" />
         </Button>
+        {/* Boton de imagen del dia */}
         <Button
           onPress={() => navigation.navigate("Day image")}
           style={styles.buttonCenter}
@@ -96,7 +100,7 @@ const styles = StyleSheet.create({
   wallpaper: {
     flex: 1,
     height: height * 0.9,
-  }
+  },
 });
 
 export default MainScreen;
