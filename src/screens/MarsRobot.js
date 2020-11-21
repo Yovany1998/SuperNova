@@ -4,11 +4,9 @@ import {
   Card,
   CardItem,
   Body,
-  Button,
   Spinner,
   Icon,
   Left,
-  Right,
 } from "native-base";
 import React, { useEffect, useState } from "react";
 import {
@@ -22,7 +20,7 @@ import {
 
 import backend from "../api/backend";
 import getEnvVars from "../../enviroment";
-import { Col, Row, Grid } from "react-native-easy-grid";
+import { Grid } from "react-native-easy-grid";
 
 //Variables que necesitaremos importar de envoriment
 const { apiKey } = getEnvVars();
@@ -46,7 +44,7 @@ const MarsRobot = () => {
       const response = await backend.get(
         `mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${apiKey}`
       );
-
+      //Mandamos el valor de response.data a setMartsRobots
       setMartsRobots(response.data);
     } catch (error) {
       // Error al momento de ejecutar la petición a la API
@@ -68,7 +66,22 @@ const MarsRobot = () => {
       </View>
     );
   }
-
+  // Función para convertir la fecha que nos da la api a formato ingles,
+  // descomponiendo la fecha en fragmentos y concatenandolos luego
+  function invertir(cadena) {
+    let fecha = cadena;
+    // Extraemos el año
+    let ano = fecha.slice(0, -6);
+    // Extraemos el mes
+    let mes = fecha.slice(5, -2);
+    // Extraemos el dia
+    let dia = fecha.slice(8);
+    // Concatenamos el nuevo formato de fecha
+    fecha = mes + dia + "-" + ano;
+    // Retornamos la fecha ya en el formato correcto que deberia
+    // ser en formato ingles
+    return fecha;
+  }
   return (
     <Container>
       {/* imagen del logo de la pantalla */}
@@ -107,9 +120,12 @@ const MarsRobot = () => {
                           <Text style={styles.negritas}>Full name:</Text>{" "}
                           {item.camera.full_name}
                         </Text>
+                        <Text>
+                          <Text style={styles.negritas}>Code:</Text> {item.id}
+                        </Text>
                         <Text note>
                           <Text style={styles.negritas}>Earth date:</Text>{" "}
-                          {item.earth_date}
+                          {invertir(item.earth_date)}
                         </Text>
                       </Body>
                     </Left>
@@ -128,16 +144,12 @@ const MarsRobot = () => {
                 <CardItem>
                   <Body>
                     <Text>
-                      <Text style={styles.negritas}>Code:</Text> {item.id}
-                    </Text>
-
-                    <Text>
                       <Text style={styles.negritas}>Landing date:</Text>{" "}
-                      {item.rover.landing_date}
+                      {invertir(item.rover.landing_date)}
                     </Text>
                     <Text>
                       <Text style={styles.negritas}>Launch date:</Text>{" "}
-                      {item.rover.launch_date}
+                      {invertir(item.rover.launch_date)}
                     </Text>
                   </Body>
                 </CardItem>

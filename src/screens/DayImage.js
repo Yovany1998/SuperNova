@@ -1,17 +1,13 @@
 // Importar los modulos necesarios
 import {
   Container,
-  H1,
-  H3,
   Body,
-  Button,
   Spinner,
   Icon,
   Left,
   Content,
   Card,
   CardItem,
-  Right,
 } from "native-base";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Image, Dimensions } from "react-native";
@@ -39,8 +35,7 @@ const DayImage = () => {
     try {
       // Consultar la API
       const response = await backend.get(`planetary/apod?api_key=${apiKey}`);
-      // console.log(response.data);
-
+      //Mandamos el valor de response.data a setMartsRobots
       setMartsRobots(response.data);
     } catch (error) {
       // Error al momento de ejecutar la petición a la API
@@ -98,6 +93,22 @@ const DayImage = () => {
     return videoImagen;
   }
 
+  // Función para convertir la fecha que nos da la api a formato ingles,
+  // descomponiendo la fecha en fragmentos y concatenandolos luego
+  function invertir(cadena) {
+    let fecha = cadena;
+    // Extraemos el año
+    let ano = fecha.slice(0, -6);
+    // Extraemos el mes
+    let mes = fecha.slice(5, -2);
+    // Extraemos el dia
+    let dia = fecha.slice(8);
+    // Concatenamos el nuevo formato de fecha
+    fecha = mes + dia + "-" + ano;
+    // Retornamos la fecha ya en el formato correcto que deberia
+    // ser en formato ingles
+    return fecha;
+  }
   return (
     //se mostraran cada uno de los elementos recorriendo la posision del elemento dentro del arreglo
     <Container>
@@ -134,7 +145,7 @@ const DayImage = () => {
 
                 <Text note>
                   <Text style={styles.negritas}>Date: </Text>
-                  {dayImage.date}{" "}
+                  {invertir(dayImage.date)}{" "}
                 </Text>
               </Body>
             </Left>

@@ -1,11 +1,9 @@
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
-import { Input, Container, Form, Item, H1, Button, Icon } from "native-base";
+import { StyleSheet, Text, Image, Dimensions } from "react-native";
+import { Container, Form, H1, Button } from "native-base";
 import { Grid } from "react-native-easy-grid";
-import { Video } from "expo-av";
-import GalleryScreen from "./GalleryScreen";
 
 //destructuring
 const { width, height } = Dimensions.get("window");

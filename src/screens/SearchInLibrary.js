@@ -1,13 +1,6 @@
 // Importar los módulos necesarios
 import React, { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Dimensions,
-  FlatList,
-} from "react-native";
+import { StyleSheet, View, Image, Dimensions } from "react-native";
 import {
   Input,
   Container,
@@ -16,16 +9,11 @@ import {
   Button,
   Header,
   Icon,
-  Spinner,
   Card,
   CardItem,
-  H3,
-  Body,
   Form,
-  Footer,
-  Left,
 } from "native-base";
-import { Col, Row, Grid } from "react-native-easy-grid";
+import { Grid } from "react-native-easy-grid";
 
 // Obtener los valores por destructuring
 const { width, height } = Dimensions.get("window");

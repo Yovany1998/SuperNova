@@ -5,11 +5,9 @@ import {
   H1,
   CardItem,
   Body,
-  Button,
   Spinner,
   Icon,
   Left,
-  Right,
 } from "native-base";
 import React, { useEffect, useState } from "react";
 import {
@@ -45,8 +43,8 @@ const GalleryScreen = ({ route, navigation }) => {
 
   const getGallery = async () => {
     try {
-      const response = await backend.get(`${apisearch}=${search}&page=1`);
-
+      const response = await backend.get(`${apisearch}=${search}`);
+      //Mandamos el valor de response.data a setGallery
       setGallery(response.data);
     } catch (error) {
       // Error al momento de ejecutar la petición a la API
@@ -76,7 +74,7 @@ const GalleryScreen = ({ route, navigation }) => {
   // correspondiente a cada uno de los dos casos
   function tipoDeArchivo(item) {
     if (item.data[0].media_type === `video`) {
-      // Generamos la dirección del video fragmentandolo y
+      // Generamos la dirección del video desfragmentandolo y
       // concatenandolo en una nueva direccion valida para reproducilo de forma correcta
       let urlDelVideo = item.href;
       let fragmentoDosDeUrl = urlDelVideo.slice(0, -16);
@@ -109,7 +107,22 @@ const GalleryScreen = ({ route, navigation }) => {
     }
     return videoImagen;
   }
-
+  // Función para convertir la fecha que nos da la api a formato ingles,
+  // descomponiendo la fecha en fragmentos y concatenandolos luego
+  function fechaIngles(cadena) {
+    let fecha = cadena;
+    // Extraemos el año
+    let ano = fecha.slice(0, -16);
+    // Extraemos el mes
+    let mes = fecha.slice(5, -13);
+    // Extraemos el dia
+    let dia = fecha.slice(7, -10);
+    // Concatenamos el nuevo formato de fecha
+    fecha = mes + dia + "-" + ano;
+    // Retornamos la fecha ya en el formato correcto que deberia
+    // ser en formato ingles
+    return fecha;
+  }
   return (
     <Container>
       {/* logo de la app */}
@@ -166,7 +179,7 @@ const GalleryScreen = ({ route, navigation }) => {
                         </Text>
                         <Text note>
                           <Text style={styles.negritas}>Date created:</Text>{" "}
-                          {item.data[0].date_created}
+                          {fechaIngles(item.data[0].date_created)}
                         </Text>
                       </Body>
                     </Left>
@@ -192,18 +205,21 @@ const GalleryScreen = ({ route, navigation }) => {
                   <Body>
                     <Body transparent>
                       <Icon active name="thumbs-up" />
+                      {/* Funcion de numero aleatorio para los likes */}
                       <Text> {numeroAleatorio(1, 1000)} Likes</Text>
                     </Body>
                   </Body>
                   <Body>
                     <Body transparent>
                       <Icon active name="chatbubbles" />
+                      {/* Funcion de numero aleatorio para los Comments */}
                       <Text> {numeroAleatorio(1, 100)} Comments</Text>
                     </Body>
                   </Body>
                   <Body>
                     <Body transparent>
                       <Icon active name="watch" />
+                      {/* Funcion para numero aleatorio para ago */}
                       <Text> {numeroAleatorio(1, 24)} h ago</Text>
                     </Body>
                   </Body>
