@@ -4,7 +4,7 @@
     "slug": "SuperNova",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/SuperNova1.png",
     "splash": {
       "image": "./assets/SuperNova.png",
       "resizeMode": "contain",

@@ -94,7 +94,7 @@ const GalleryScreen = ({ route, navigation }) => {
           style={styles.marsphoto}
         />
       );
-    } else {
+    } else if (item.data[0].media_type === `image`) {
       // En caso de que sea imagen
       videoImagen = (
         <Image
@@ -104,7 +104,17 @@ const GalleryScreen = ({ route, navigation }) => {
           style={styles.marsphoto}
         />
       );
+    } else {
+      videoImagen = (
+        <Image
+          source={{
+            uri: `../../assets/SuperNova.png`,
+          }}
+          style={styles.marsphoto}
+        />
+      );
     }
+
     return videoImagen;
   }
   // Función para convertir la fecha que nos da la api a formato ingles,
